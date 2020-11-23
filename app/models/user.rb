@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :friendships
   has_many :inverse_friendships, class_name: :friendship, foreign_key: :friend_id
+  has_one_attached :photo
 
   def friends
     friends_array = friendships.map { |friendship| friendship.friend }
