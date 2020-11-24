@@ -10,3 +10,20 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.content-wrapper {
+min-height: calc(100vh - 70px - 80px);
+}
+
+.navbar-down-sreen {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  a {
+    color: $black;
+  }
+}
+

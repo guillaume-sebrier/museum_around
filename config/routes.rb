@@ -8,6 +8,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :destroy]
   end
   resources :users do
-    resources :friendships, only: [:new, :create]
+    resources :friendships, only: [:new, :create, :index]
   end
 end
