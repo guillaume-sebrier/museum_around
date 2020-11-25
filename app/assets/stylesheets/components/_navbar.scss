@@ -23,6 +23,7 @@ min-height: calc(100vh - 70px - 80px);
   justify-content: space-around;
   background: #FAFAFA;
   box-shadow: 0px 0px 1px $gray;
+  z-index: 2;
 
   a {
     color: $gray;
