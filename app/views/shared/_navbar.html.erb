@@ -10,14 +10,23 @@
     <i class="fas fa-search-location"></i>
   <% end %>
 
-  <%= link_to exhibition_favorites_path(current_user) do %>
-    <i class="far fa-heart"></i>
+  <% if user_signed_in? %>
+    <%= link_to exhibition_favorites_path(current_user) do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path %>
   <% end %>
 
-  <%= link_to user_friendships_path(current_user) do %>
-    <i class="far fa-address-book"></i>
+  <% if user_signed_in? %>
+    <%= link_to user_friendships_path(current_user) do %>
+      <i class="far fa-address-book"></i>
+    <% end %>
+  <% else %>
+    <%= link_to new_user_session_path %>
   <% end %>
 </div>
+<<<<<<< HEAD
 
 <% link_to
 
@@ -34,3 +43,5 @@
 
 
 
+=======
+>>>>>>> 3d0fa0cff6ab65f1b5a183cf7a28a2c9fd5208e4
