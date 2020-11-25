@@ -7,8 +7,8 @@ class ExhibitionsController < ApplicationController
       {
         lat: site.latitude,
         lng: site.longitude,
-        # infoWindow: render_to_string(partial: "info_window", locals: { site: site }),
-        image_url: helpers.asset_url('yellow-location-marker.png')
+        infoWindow: render_to_string(partial: "info_window", locals: { site: site }),
+        image_url: helpers.asset_url('map-pin.png')
       }
     end
   end
