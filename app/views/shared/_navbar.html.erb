@@ -1,6 +1,6 @@
 
 
-<div class= "navbar-down-sreen">
+<div class= "navbar-down-screen border-top py-3">
 
   <%= link_to root_path do %>
     <i class="fas fa-home"></i>
@@ -10,13 +10,16 @@
     <i class="fas fa-search-location"></i>
   <% end %>
 
- <!--  <%#= link_to exhibition_favorites_path do %>
+  <%= link_to exhibition_favorites_path(current_user) do %>
     <i class="far fa-heart"></i>
-  <%# end %> -->
+  <% end %>
 
-  <%#= link_to user_friendships_path do %>
-    <!-- <i class="far fa-address-book"></i> -->
-  <%# end %>
+  <%= link_to user_friendships_path(current_user) do %>
+    <i class="far fa-address-book"></i>
+  <% end %>
+</div>
+
+
 
 
 
