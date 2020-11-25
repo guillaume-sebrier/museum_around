@@ -1,0 +1,45 @@
+.banner {
+  height: 60vh;
+  background-color: #fbb034;
+  background-image: linear-gradient(315deg, #fbb034 0%, #ffd700 74%);
+}
+
+.btn-primary {
+  scroll-behavior: smooth;
+}
+
+.banner a {
+  margin-top: 340px;
+  margin-bottom: 1rem;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.banner-top h2 {
+  margin-top: 15px;
+  font-size: 24px;
+}
+
+.logo-img {
+  width: 60vw;
+  margin-top: 40px;
+}
+
+
+.fa-angle-down {
+  color: white;
+  font-size: 20px;
+}
+
+#flex-container-homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.home-search-bar {
+  margin-top: 60px;
+  margin-bottom: 95px;
+}
+
