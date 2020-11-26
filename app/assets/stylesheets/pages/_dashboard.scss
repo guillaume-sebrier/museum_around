@@ -22,8 +22,6 @@
   color: white;
 }
 
-
-
 .avatar-bordered {
   width: 120px;
   border-radius: 20%;
@@ -72,7 +70,7 @@
 }
 
 .class-content {
-  margin : 20px;
+  margin : 10px;
 }
 
 .header-tab {
@@ -89,6 +87,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  margin-bottom: 14px;
 }
 
 .card-product img {
