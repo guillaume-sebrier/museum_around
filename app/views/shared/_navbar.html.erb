@@ -25,5 +25,13 @@
   <% else %>
     <%= link_to new_user_session_path %>
   <% end %>
-</div>
 
+  <% if current_user.photo.attached? %>
+    <%= cl_image_tag current_user.photo.key, :width => 90, :height => 90, :crop => :thumb, :gravity => :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+  <% else %>
+    <div class="icon-user">
+      <i class="far fa-user-circle"></i>
+    </div>
+  <% end %>
+
+</div>
