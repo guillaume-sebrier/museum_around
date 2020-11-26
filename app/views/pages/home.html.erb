@@ -1,70 +1,81 @@
 <div class="banner-home-page">
-  <div class="container text-center" id="flex-container-homepage">
-    <div class="banner-top">
-      <%= image_tag("logo-museum-around.png", class: "logo-img") %>
-      <h2>Culture at your fingertips</h2>
-    </div>
-    <div class="home-search-bar">
-      <p>Search bar</p>
-    </div>
-    <div>
-      <a class="banner-bottom" href="#section2">Browse catalogue</a>
-      <br>
-      <i class="fas fa-angle-down"></i>
-    </div>
+  <div class="banner-top">
+    <%= image_tag("logo-museum-around.png", class: "logo-img") %>
+  </div>
+
+  <div class="search-bar">
+    <%= simple_form_for :search, url: exhibitions_path, method: :get, class: "form-inline" do |f| %>
+      <div class="magnifying-style-suite">
+        <div class= "form-row justify-content-around" style="position:relative;">
+      </div>
+      <div class="magnifying-style">
+        <i class="fas fa-search"></i>
+      </div>
+      <%= f.input :address, placeholder:'Where do you want to go ?', required: false, label: false, input_html: { id:"visit_address" }, class:"search-bar-address-input" %>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="banner-b">
+    <a class="banner-bottom" href="#section2">Browse catalogue</a>
+    <i class="fas fa-angle-down"></i>
   </div>
 </div>
+
+  <div class='fingertips'>
+    <h2>Culture at your fingertips</h2>
+  </div>
 
 <div class="container text-center" id="section2">
   <div class="category-cards-box">
 
     <div class="cards">
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=706&q=80)">
-      <%= link_to "Peinture", exhibitions_path(category: "Peinture"), class: "link-home-page" %>
+        <%= link_to "Peinture", exhibitions_path(category: "Peinture"), class: "link-home-page" %>
       </div>
 
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1529154166925-574a0236a4f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80)">
-      <%= link_to "Sculpture", exhibitions_path(category: "Sculpture"), class: "link-home-page" %>
+        <%= link_to "Sculpture", exhibitions_path(category: "Sculpture"), class: "link-home-page" %>
       </div>
     </div>
 
     <div class="cards">
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1501435764075-903868ebb179?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80)">
-      <%= link_to "Street Art", exhibitions_path(category: "Street Art"), class: "link-home-page" %>
+        <%= link_to "Street Art", exhibitions_path(category: "Street Art"), class: "link-home-page" %>
       </div>
 
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1518281181528-dfdb97a48e90?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTl8fGFyY2hpdGVjdHVyZSUyMG1vZGVybnxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=800&q=60)">
-      <%= link_to "Contemporain", exhibitions_path(category: "Contemporain"), class: "link-home-page" %>
+        <%= link_to "Contemporain", exhibitions_path(category: "Contemporain"), class: "link-home-page" %>
       </div>
     </div>
 
     <div class="cards">
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1487837647815-bbc1f30cd0d2?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTZ8fHN0YWlyc3xlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=800&q=60)">
-      <%= link_to "Design", exhibitions_path(category: "Design"), class: "link-home-page" %>
+        <%= link_to "Design", exhibitions_path(category: "Design"), class: "link-home-page" %>
       </div>
 
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1587798074130-015f7eb202ed?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTR8fGFydCUyMGdhbGxlcnl8ZW58MHx8MHw%3D&auto=format&fit=crop&w=800&q=60)">
-      <%= link_to "Photographie", exhibitions_path(category: "Photographie"), class: "link-home-page" %>
+        <%= link_to "Photographie", exhibitions_path(category: "Photographie"), class: "link-home-page" %>
       </div>
     </div>
 
     <div class="cards">
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1487603097198-fe76cd44579d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mzh8fGFyY2hpdGVjdHVyZSUyMG1vZGVybnxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=800&q=60)">
-      <%= link_to "Architecture", exhibitions_path(category: "Architecture"), class: "link-home-page" %>
+        <%= link_to "Architecture", exhibitions_path(category: "Architecture"), class: "link-home-page" %>
       </div>
 
-    <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGNpbmVtYXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=800&q=60)">
-      <%= link_to "Cinéma", exhibitions_path(category: "Cinéma"), class: "link-home-page" %>
+      <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGNpbmVtYXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=800&q=60)">
+        <%= link_to "Cinéma", exhibitions_path(category: "Cinéma"), class: "link-home-page" %>
       </div>
     </div>
 
     <div class="cards" id="cards-bottom">
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1592488881715-4bfcb5b7a911?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzZ8fGhpc3Rvcnl8ZW58MHx8MHw%3D&auto=format&fit=crop&w=800&q=60)">
-      <%= link_to "Historique", exhibitions_path(category: "Historique"), class: "link-home-page" %>
+        <%= link_to "Historique", exhibitions_path(category: "Historique"), class: "link-home-page" %>
       </div>
 
       <div class="category-cards" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1507838153414-b4b713384a76?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8bXVzaWN8ZW58MHx8MHw%3D&auto=format&fit=crop&w=800&q=60)">
-      <%= link_to "Musique", exhibitions_path(category: "Musique"), class: "link-home-page" %>
+        <%= link_to "Musique", exhibitions_path(category: "Musique"), class: "link-home-page" %>
       </div>
     </div>
   </div>

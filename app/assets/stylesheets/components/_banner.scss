@@ -1,7 +1,14 @@
 .banner-home-page {
-  height: 60vh;
+  height: 55vh;
   background-color: #fbb034;
   background-image: linear-gradient(315deg, #fbb034 0%, #ffd700 74%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .search-bar {
+    flex-grow: 1;
+  }
 }
 
 .btn-primary {
@@ -23,7 +30,7 @@
 
 .logo-img {
   width: 80vw;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 
@@ -32,10 +39,12 @@
   font-size: 20px;
 }
 
-#flex-container-homepage {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.fingertips h2 {
+  text-align: center;
+  // font-weight: bold;
+  color: $gray;
+  font-size: 24px;
+  padding-top: 20px;
 }
 
 .home-search-bar {
@@ -43,3 +52,44 @@
   margin-bottom: 80px;
 }
 
+.search_address {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+#visit_address {
+  background-color: whitesmoke;
+  border-radius: 20px;
+  padding: 17px;
+  width: 83vw;
+}
+
+.button-search input {
+  border-radius: 20px;
+  background: whitesmoke;
+  // padding: 17px;
+  width: 20vw;
+  border-width: none;
+  padding: 8px 24px;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.button-search:hover {
+  background: whitesmoke;
+  color: gray;
+}
+
+.magnifying-style {
+  position: absolute;
+  right: 28px;
+  top: 10px;
+}
+
+.magnifying-style-suite {
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+}
