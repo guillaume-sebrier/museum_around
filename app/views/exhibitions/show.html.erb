@@ -1,11 +1,11 @@
 <h3 class="text-center pt-1"><%= @exhibition.title %></h3>
 <!-- Liens vers admin page for exhibition -->
+<%= image_tag @exhibition.photo, alt: @exhibition.description %>
+<p><%= @exhibition.description %></p>
 <% if current_user.admin? %>
   <%= link_to "Edit", edit_exhibition_path(@exhibition) %>
   <%= link_to "Delete", exhibition_path(@exhibition), method: :delete, data: { confirm: "Are you sure?" }  %>
 <% end %>
-<%= image_tag @exhibition.photo, alt: @exhibition.description %>
-<p><%= @exhibition.description %></p>
 <div class="booking-details-show d-flex align-items-center">
   <div class="booking-collection-show pr-5">
     <div class="p-2"><i class="fas fa-search"></i> <span class="font-weight-bolder">Catégorie:</span> </i> <%= @exhibition.category %></div>
@@ -34,3 +34,10 @@
     <% end %>
   </ul>
 </div>
+<h4>Vous avez vu cette expo? Laissez votre commentaire !</h4>
+<%= simple_form_for [ @exhibition, @review ] do |f| %>
+  <%= f.input :rating, collection: (1..5).to_a, label: false %>
+  <%= f.input :comment, label: false %>
+  <%= f.submit "Valider", class: "btn btn-info" %>
+<% end %>
+
