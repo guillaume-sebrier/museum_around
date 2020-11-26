@@ -2,7 +2,12 @@ class ExhibitionsController < ApplicationController
   before_action :set_exhibition, only: %i[show destroy update edit]
 
   def index
-    @exhibitions = Exhibition.all
+    if params[:category]
+      @exhibitions = Exhibition.where(category: params[:category])
+    else
+      @exhibitions = Exhibition.all
+    end
+
     @sites = Site.all
 
     @markers_site = @sites.geocoded.map do |site|
@@ -23,19 +28,11 @@ class ExhibitionsController < ApplicationController
       }
     end
 
-    @filtered_exhibitions = Exhibition.where(category: params[:category])
-
-    @filtered_markers = @filtered_exhibitions.map do |exhibition|
-      {
-        lat: exhibition.site.latitude,
-        lng: exhibition.site.longitude,
-        infoWindow: render_to_string(partial: "info_window_exhibition", locals: { exhibition: exhibition }),
-        image_url: helpers.asset_url('pin-exhibitions.png')
-      }
+    if params[:category]
+      @markers = @markers_exhibition
+    else
+      @markers = @markers_site + @markers_exhibition
     end
-
-    @markers = @filtered_markers
-    # @markers = @markers_site + @markers_exhibition + @filtered_markers
   end
 
   def show
