@@ -1,7 +1,8 @@
 <h1>Editing Exhibition</h1>
-
+<div class="container">
 <%= render 'form', exhibition: @exhibition %>
 
 <%= link_to 'Show', @exhibition %> |
 <%= link_to 'Back', exhibitions_path %> |
 <%= link_to "Delete", exhibition_path(@exhibition), method: :delete, data: { confirm: "Are you sure?" }  %>
+</div>

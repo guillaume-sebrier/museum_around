@@ -48,7 +48,9 @@ class ExhibitionsController < ApplicationController
   end
 
   def update
+    @site = Site.find(params[:exhibition][:site].to_i)
     @exhibition.update(exhibition_params)
+    @exhibition.update(site: @site)
     redirect_to exhibition_path(@exhibition)
   end
 
@@ -59,6 +61,6 @@ class ExhibitionsController < ApplicationController
   end
 
   def exhibition_params
-    params.require(:exhibition).permit(:title, :starting_date, :ending_date, :description, :price, :category, :photo, :place, :date, :site)
+    params.require(:exhibition).permit(:title, :starting_date, :ending_date, :description, :price, :category, :photo, :place, :date, site_attributes: [:id])
   end
 end
