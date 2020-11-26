@@ -97,6 +97,8 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
     ferrum (0.9)
       addressable (~> 2.5)
       cliver (~> 0.3)
@@ -268,6 +270,7 @@ DEPENDENCIES
   cloudinary (~> 1.16.0)
   devise
   dotenv-rails
+  faker
   ferrum
   font-awesome-sass
   geocoder

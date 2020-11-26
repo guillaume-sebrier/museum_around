@@ -15,7 +15,8 @@ def scrap_expos (url)
     place = element.search('.Article-line-place').text.strip.gsub("\n","").gsub(/ +/," ")
     description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
     puts "Creating #{title}"
-    Exhibition.create(title: title, description: description, site: Site.all.sample, place: place, photo: photo, date: date, category: Exhibition::CATEGORIES.sample, price: 123, ending_date: (Time.now + 400000).to_date)
+    exhibition = Exhibition.create(title: title, description: description, site: Site.all.sample, place: place, photo: photo, date: date, category: Exhibition::CATEGORIES.sample, price: 123, ending_date: (Time.now + 400000).to_date)
+    Review.create(rating: (1..5).to_a.sample, comment: Faker::Restaurant.review, user: User.all.sample, exhibition: exhibition)
   end
 end
 

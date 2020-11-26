@@ -1,14 +1,12 @@
 <%= simple_form_for @exhibition do |f| %>
-  <%= f.input :title %>
-  <%= f.input :date %>
-  <%= f.input :starting_date %>
-  <%= f.input :ending_date %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :category %>
-  <%= f.input :photo %>
+  <%= f.input :title, class: "p-0 m-0" %>
+  <%= f.input :date, class: "p-0 m-0" %>
+  <%= f.input :starting_date, label: "starting_date - A CHANGER"  %>
+  <%= f.input :ending_date, label: "ending_date - A CHANGER"  %>
+  <%= f.input :category, label: "category - A CHANGER" %>
+  <%= f.input :price, label: "price - A CHANGER" %>
   <%= f.input :place %>
-  <%= f.input :fake %>
   <%= f.input :site, collection: @sites, value_method: :id, label: "Site" , include_blank: false  %>
+  <%= f.input :fake, collection: [false, true],  label: "fake - A CHANGER"%>
   <%= f.submit "Create exhibition", class: "btn btn-success" %>
 <% end %>
