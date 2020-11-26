@@ -7,11 +7,14 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.user = current_user
+    @exhibition = Exhibition.find(params[:exhibition_id])
+    @review.exhibition = @exhibition
     if @review.save
+      redirect_to exhibition_path(@exhibition)
       flash[:notice] = "Thank you for your contribution !"
     else
       flash[:alert] = "Something went wrong."
-      # render :new, @booking: Booking.find(params[:booking_id])
     end
   end
 

@@ -36,6 +36,7 @@ class ExhibitionsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def destroy

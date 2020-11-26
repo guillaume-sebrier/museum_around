@@ -6,7 +6,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     if @booking.save!
       redirect_to dashboard_path
-      flash[:notice] = "Your booking is confirmed !"
+      flash[:notice] = "Ta réservation est validée"
     else
       render :new
     end
