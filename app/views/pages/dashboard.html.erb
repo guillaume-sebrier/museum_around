@@ -1,40 +1,83 @@
 <div class="banner-dashboard">
-  <div class="profile-picture">
-    <a href="profile-pic">
-      <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
-    </a>
-
-  </div>
+  <a href="profile-pic">
+    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+  </a>
+  <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-logout" %>
 </div>
+
 
 
 <div class="container">
   <div class="introduction text-center mt-3">
-    <h2> Hello, Léa </h2>
-    <p>Welcome back to your profile</p>
+    <h2>Hello, <%= current_user.first_name %></h2>
+    <p>Bienvenue sur ton profil</p>
   </div>
 
 
   <ul class="tabs">
-    <li data-tab-target="#bookings-content" class="active tab">Bookings</li>
-    <li data-tab-target="#last-chance-content" class="tab">Last chance</li>
-    <li data-tab-target="#recommandations-content" class="tab">Recommandations</li>
+    <li data-tab-target="#bookings-content" class="active tab">Réservations</li>
+    <li data-tab-target="#last-chance-content" class="tab">Dernière chance</li>
+    <li data-tab-target="#recommandations-content" class="tab">Suggestions</li>
   </ul>
 
 
   <div class="class-content">
     <div id="bookings-content" data-tab-content class="active">
-      <h1>Your bookings</h1>
-      <p>bla bla bla</p>
+      <p class="header-tab">Tes visites à venir</p>
+      <p class="header-tab">Tes visites passées</p>
     </div>
+
     <div id="last-chance-content" data-tab-content>
-      <h1>Last chance to book</h1>
-      <p>bla bla bla</p>
+      <p class="header-tab">Dernières chances</p>
+      <p><%= current_user.first_name %>, ces expositions arrivent bientôt à leur terme ! Dépêche-toi :</p>
+
+      <div class="block-notifications">
+        <% @last_chance_exhibitions.each do |exhibition| %>
+          <div class="notification-group">
+            <div class="notification">
+              <img src= "<%= exhibition.photo %>" class="avatar-large" />
+              <div class="notification-content">
+                <p><small>Jusqu'au <%= exhibition.ending_date %></small></p>
+                <p><strong> <%= exhibition.title %></strong></p>
+                <p id="museum-description"><%= exhibition.site.name %></p>
+              </div>
+              <div class="btn btn-infos">
+                <%= link_to "infos", exhibition_path(:id) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
+
+
+
     <div id="recommandations-content" data-tab-content>
-      <h1>Your recommandations</h1>
-      <p>bla bla bla</p>
+      <p class="header-tab">Suggestions</p>
+      <p>Ces expositions sont susceptibles de t'intéresser, jette un coup d'oeil :</p>
+
+      <div class="block-recommandations">
+        <% @suggested_exhibitions.each do |exhibition| %>
+        <div class="card-product">
+          <img src="<%= exhibition.photo %>" />
+          <div class="card-product-infos">
+            <h2><%= exhibition.title %></h2>
+            <p>Product description with <strong>relevant info</strong> only.</p>
+          </div>
+        </div>
+       <% end %>
+      </div>
+
     </div>
+
+
+
+
   </div>
+
+
+
+
+
 </div>
 

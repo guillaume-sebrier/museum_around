@@ -1,2 +1,43 @@
-<h1>Exhibitions#show</h1>
-<p>Find me in app/views/exhibitions/show.html.erb</p>
+<h3 class="text-center pt-1"><%= @exhibition.title %></h3>
+<!-- Liens vers admin page for exhibition -->
+<%= image_tag @exhibition.photo, alt: @exhibition.description %>
+<p><%= @exhibition.description %></p>
+<% if current_user.admin? %>
+  <%= link_to "Edit", edit_exhibition_path(@exhibition) %>
+  <%= link_to "Delete", exhibition_path(@exhibition), method: :delete, data: { confirm: "Are you sure?" }  %>
+<% end %>
+<div class="booking-details-show d-flex align-items-center">
+  <div class="booking-collection-show pr-5">
+    <div class="p-2"><i class="fas fa-search"></i> <span class="font-weight-bolder">Catégorie:</span> </i> <%= @exhibition.category %></div>
+    <div class="p-2"><i class="fas fa-map-marker-alt"></i> <span class="font-weight-bolder"> Salle:</span> </i>  <%= @exhibition.site.name %></div>
+    <div class="p-2"><i class="fas fa-map-marker-alt"></i> <span class="font-weight-bolder"> Adresse:</span> </i>  <%= @exhibition.site.address %></div>
+    <div class="p-2"><i class="fas fa-euro-sign"></i> <span class="font-weight-bolder"> Prix: </span></i><%= @exhibition.price %> €</div>
+    <div class="booking-button-show mt-6">
+      <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn btn-group-toggle" %>
+    </div>
+  </div>
+</div>
+<div id="review-card-show">
+  <h4 class="review-title p-1">Commentaires</h4>
+  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+  <ul class="list-group">
+    <% @exhibition.reviews.each do |review| %>
+      <li class="list-group-item">
+      <% review.rating.to_i.times do  %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      <% (5-review.rating.to_i).times do  %>
+        <i class="far fa-star"></i>
+      <% end %>
+       <strong><%= review.user.first_name %> <%= review.user.last_name %>.</strong> - <%= review.comment %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<h4>Vous avez vu cette expo? Laissez votre commentaire !</h4>
+<%= simple_form_for [ @exhibition, @review ] do |f| %>
+  <%= f.input :rating, collection: (1..5).to_a, label: false %>
+  <%= f.input :comment, label: false %>
+  <%= f.submit "Valider", class: "btn btn-info" %>
+<% end %>
+
