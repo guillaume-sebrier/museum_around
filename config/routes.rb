@@ -14,4 +14,5 @@ Rails.application.routes.draw do
     resources :friendships, only: [:new, :create, :index]
     resources :favorites, only: [:index]
   end
+  resources :sites, only: [:show, :edit, :update, :destroy]
 end

@@ -9,7 +9,7 @@ class ExhibitionsController < ApplicationController
       {
         lat: site.latitude,
         lng: site.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { site: site }),
+        infoWindow: render_to_string(partial: "info_window_site", locals: { site: site }),
         image_url: helpers.asset_url('pin-sites.png')
       }
     end
