@@ -1,4 +1,6 @@
 class ExhibitionsController < ApplicationController
+  before_action :set_exhibition, only: %i[show destroy update edit]
+
   def index
     @exhibitions = Exhibition.all
     @sites = Site.all
@@ -24,5 +26,29 @@ class ExhibitionsController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    @exhibition.destroy
+    redirect_to exhibitions_path
+  end
+
+  def edit
+    @sites = Site.all
+  end
+
+  def update
+    @exhibition.update(exhibition_params)
+    redirect_to exhibition_path(@exhibition)
+  end
+
+  private
+
+  def set_exhibition
+    @exhibition = Exhibition.find(params[:id])
+  end
+
+  def exhibition_params
+    params.require(:exhibition).permit(:title, :starting_date, :ending_date, :description, :price, :category, :photo, :place, :date, :site)
   end
 end

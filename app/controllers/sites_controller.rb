@@ -1,2 +1,3 @@
 class SitesController < ApplicationController
+
 end
