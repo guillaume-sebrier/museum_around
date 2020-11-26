@@ -1,2 +1,22 @@
-<p><%= exhibition.title %></p>
-<%= link_to "View more", exhibition_path(exhibition) %>
+<div class="info-window-card">
+  <div class="info-window-img-top">
+    <%= image_tag exhibition.photo, class:"info-window-img-top" %>
+    <p><%= exhibition.category %></p>
+  </div>
+  <div class="info-window-title">
+      <p><%= exhibition.title %></p>
+  </div>
+  <div class="info-window-body">
+    <div>
+      <p><i class="fas fa-map-marker-alt pr-1"></i><%= exhibition.site.name %>
+        <br>
+        Date de fin : <%= exhibition.ending_date %>
+      </p>
+    </div>
+    <div class="info-window-link">
+      <%= link_to exhibition_path(exhibition) do %>
+        <i class="fas fa-arrow-right"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
