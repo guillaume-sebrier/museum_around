@@ -20,7 +20,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 14px;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .category-cards-box {
@@ -31,4 +31,8 @@
 .link-home-page {
   text-decoration: none;
   color: white;
+}
+
+#cards-bottom {
+  margin-bottom: 50px;
 }
