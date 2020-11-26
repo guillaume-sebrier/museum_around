@@ -22,7 +22,20 @@ class ExhibitionsController < ApplicationController
         image_url: helpers.asset_url('pin-exhibitions.png')
       }
     end
-    @markers = @markers_site + @markers_exhibition
+
+    @filtered_exhibitions = Exhibition.where(category: params[:category])
+
+    @filtered_markers = @filtered_exhibitions.map do |exhibition|
+      {
+        lat: exhibition.site.latitude,
+        lng: exhibition.site.longitude,
+        infoWindow: render_to_string(partial: "info_window_exhibition", locals: { exhibition: exhibition }),
+        image_url: helpers.asset_url('pin-exhibitions.png')
+      }
+    end
+
+    @markers = @filtered_markers
+    # @markers = @markers_site + @markers_exhibition + @filtered_markers
   end
 
   def show
