@@ -3,6 +3,53 @@
 }
 
 .mapboxgl-popup-content {
-  text-align: center;
+  // text-align: center;
   font-family: 'Source Sans Pro';
+  border-radius: 4px;
 }
+
+.info-window-card {
+  a {
+    color: $gray;
+  }
+
+  .info-window-title {
+    text-align: center;
+    margin-top: 4px;
+    font-size: 15px;
+    font-family: 'Ovo';
+  }
+
+  .info-window-img-top {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    p {
+      background-color: #FDC71C;
+      position: absolute;
+      font-weight: bold;
+      bottom: 0;
+      margin-left: 10px;
+      padding: 2px 3px;
+      border-radius: 4px;
+    }
+  }
+
+  .info-window-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .info-window-link {
+    text-align: right;
+  }
+}
+
+
+
