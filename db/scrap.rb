@@ -1,18 +1,24 @@
 require 'open-uri'
 require 'nokogiri'
+require 'ferrum'
 
-def scrap_expos
-  url = "https://www.parisinfo.com/ou-sortir-a-paris/infos/guides/calendrier-expositions-paris?perPage=50"
-  fake_site = Site.new(name: "fake")
-  html_doc = Nokogiri::HTML(open(url).read)
+def scrap_expos (url)
+  browser = Ferrum::Browser.new
+  browser.goto(url)
+  html = browser.body
+  html_doc = Nokogiri::HTML(html)
+  browser.quit
+  i=0
   html_doc.search('.Article-line').each do |element|
-    p photo = element.search('img').attribute('src').value
-    p title = element.search('h3').text.strip
-    p date = element.search('.date').text.strip
-    p place = element.search('.Article-line-place').text.strip
-    p description = element.search('.Article-line-content').text.strip
-    Exhibition.new(title: title, description: description, site: fake_site )
+    i+=0.001
+    photo = element.search('img').attribute('src').value
+    title = element.search('h3').text.strip.gsub("\n","").gsub(/ +/," ").gsub("(reporté)", "").gsub("(événement suspendu)", "").gsub("(reportée)", "")
+    date = element.search('.date').text.strip.gsub("\n","").gsub(/ +/," ")
+    place = element.search('.Article-line-place').text.strip.gsub("\n","").gsub(/ +/," ")
+    fake_site = Site.create(name: "fake #{place}", latitude: 48.866667+i, longitude: 2.333333+i)
+    description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
+    puts "Creating #{title}"
+    Exhibition.create(title: title, description: description, site: fake_site, place: place, photo: photo, date: date )
   end
 end
 
-scrap_expos

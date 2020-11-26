@@ -1,0 +1,13 @@
+<%= simple_form_for @exhibition do |f| %>
+  <%= f.input :title %>
+  <%= f.input :date %>
+  <%= f.input :starting_date %>
+  <%= f.input :ending_date %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :category %>
+  <%= f.input :photo %>
+  <%= f.input :place %>
+  <%= f.input :site, collection: @sites, value_method: :id, label: "Site" , include_blank: false  %>
+  <%= f.submit "Create exhibition", class: "btn btn-success" %>
+<% end %>

@@ -1,2 +1,50 @@
 <h1>Exhibitions#show</h1>
-<p>Find me in app/views/exhibitions/show.html.erb</p>
+
+
+<!-- Liens vers admin page for exhibition -->
+<% if current_user.admin? %>
+  <%= link_to "Edit", edit_exhibition_path(@exhibition) %>
+  <%= link_to "Delete", exhibition_path(@exhibition), method: :delete, data: { confirm: "Are you sure?" }  %>
+<% end %>
+
+<%= @exhibition.title %></h2>
+<p><%= @exhibition.description %></p>
+        <div class="booking-details-show d-flex align-items-center">
+          <div class="booking-collection-show pr-5">
+            <div class="p-2"><i class="fas fa-search"></i> <span class="font-weight-bolder">Catégorie:</span> </i> <%= @exhibition.category %></div>
+            <div class="p-2"><i class="fas fa-map-marker-alt"></i> <span class="font-weight-bolder"> Address:</span> </i>  <%= @exhibition.site.address %></div>
+            <div class="p-2"><i class="fas fa-euro-sign"></i> <span class="font-weight-bolder"> Price/person: </span></i><%= @exhibition.price %> €</div>
+          </div>
+          <div class="booking-button-show mt-6">
+              <!-- <p><%= @exhibition.description %></p> -->
+              <%= link_to "Book this visit", new_exhibition_booking_path(@exhibition), class:"btn btn-group-toggle" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="back-link mt-4">
+      <%= link_to "Back to all exhibitions", exhibitions_path, class:"btn btn-ghost" %>
+    </div>
+
+   <hr>
+
+    <div id="review-card-show">
+      <h3 class="review-title p-3">Reviews</h3>
+      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+
+      <ul class="list-group">
+        <% @exhibition.reviews.each do |review| %>
+          <li class="list-group-item">
+          <% review.rating.to_i.times do  %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <% (5-review.rating.to_i).times do  %>
+            <i class="far fa-star"></i>
+          <% end %>
+           - by <strong><%= review.user.first_name %> <%= review.user.last_name[0] %>.</strong> - <%= review.comment %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
