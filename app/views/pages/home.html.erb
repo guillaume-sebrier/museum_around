@@ -2,6 +2,9 @@
   <div class="banner-top">
     <%= image_tag("logo-museum-around.png", class: "logo-img") %>
   </div>
+  <div class='fingertips'>
+    <h2>La culture à portée de main</h2>
+  </div>
 
   <div class="search-bar">
     <%= simple_form_for :search, url: exhibitions_path, method: :get, class: "form-inline" do |f| %>
@@ -22,9 +25,6 @@
   </div>
 </div>
 
-  <div class='fingertips'>
-    <h2>Culture at your fingertips</h2>
-  </div>
 
 <div class="container text-center" id="section2">
   <div class="category-cards-box">
