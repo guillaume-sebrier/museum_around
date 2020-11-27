@@ -1,23 +1,27 @@
+<div class= "style-boook"
 <div class="container">
   <h3 class="my-2 text-center">Réserver votre billet pour </h3>
   <h5 class="mb-2 text-center"><%= @exhibition.title %></h5>
   <h6 class="mb-2 text-center"><em>@<%= @exhibition.site.name %></em></h6>
   <h6 class="mb-2 text-center"><em><%= @exhibition.site.address %></em></h6>
     <div class="row">
-      <div class="col border-right">
-        <div class="form-card">
-          <%= simple_form_for [@exhibition, @booking] do |f| %>
-            <%= f.input :date, label: 'Date', as: :string, input_html: {type: :date} %>
-            <%= f.input :time, label: 'Heure', as: :string, input_html: {type: :time} %>
-            <% if  !@exhibition.site.opening_time.nil? %>
-              <p><em>Heures d'ouverture : <%=@exhibition.site.opening_time %></em></p>
+      <div class="formulaire-style">
+          <div class="col">
+          <div class="form-card">
+            <%= simple_form_for [@exhibition, @booking] do |f| %>
+              <%= f.input :date, label: 'Date', as: :string, input_html: {type: :date} %>
+              <%= f.input :time, label: 'Heure', as: :string, input_html: {type: :time} %>
+              <% if  !@exhibition.site.opening_time.nil? %>
+                <p><em>Heures d'ouverture : <%=@exhibition.site.opening_time %></em></p>
+              <% end %>
+              <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Combien de billets' %>
+              <div class="submit-button">
+                <%= f.submit "Réserver votre visite !", class: "font-weight-bold btn btn-info btn-lg" %>
+              </div>
             <% end %>
-            <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Combien de billets' %>
-            <div class="submit-button">
-              <%= f.submit "Réserver !", class: "font-weight-bold btn btn-info btn-lg" %>
-            </div>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
+</div>
 </div>
