@@ -27,7 +27,9 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initTabs } from '../components/init_tabs';
 import { submitSearch } from '../components/submit_search';
+import { submitSelect } from '../components/submit_select';
 import { initStarRating } from '../plugins/init_star_rating';
+import { submitSelectExpos } from '../components/submit_select_expos';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -39,4 +41,6 @@ document.addEventListener('turbolinks:load', () => {
   initTabs();
   submitSearch();
   initStarRating();
+  submitSelect();
+  submitSelectExpos();
 });

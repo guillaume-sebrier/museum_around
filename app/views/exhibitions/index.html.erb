@@ -4,6 +4,9 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <%= form_tag exhibitions_path, method: :get, class: "form-map" do %>
-  <%= select_tag 'category', options_for_select(Exhibition::CATEGORIES || "Toutes categories"), class: 'select-button' %>
-  <%= submit_tag "Filtrer", class: "btn btn-primary btn-sm" %>
+  <%= select_tag 'category', options_for_select(Exhibition::CATEGORIES), include_blank: "Catégories", class: 'select-button' %>
+<% end %>
+
+<%= form_tag exhibitions_path, method: :get, class: "form-map-expos" do %>
+  <%= select_tag 'expo', options_for_select(["Collections temporaires","Collections permanentes"]), include_blank: "Tous types de collections", class: 'select-button-expos' %>
 <% end %>
