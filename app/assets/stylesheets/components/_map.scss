@@ -8,6 +8,18 @@
   border-radius: 4px;
 }
 
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+  border-radius: 30px;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  height: 40px;
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  top: 9px;
+}
+
 .info-window-card {
   a {
     color: $gray;
