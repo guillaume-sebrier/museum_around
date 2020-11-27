@@ -14,23 +14,23 @@
     <%= link_to exhibition_favorites_path(current_user) do %>
       <i class="far fa-heart"></i>
     <% end %>
-  <% else %>
-    <%= link_to new_user_session_path %>
   <% end %>
 
   <% if user_signed_in? %>
     <%= link_to user_friendships_path(current_user) do %>
       <i class="far fa-address-book"></i>
     <% end %>
-  <% else %>
-    <%= link_to new_user_session_path %>
   <% end %>
 
-  <% if current_user.photo.attached? %>
-    <%= cl_image_tag current_user.photo.key, :width => 90, :height => 90, :crop => :thumb, :gravity => :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+  <% if user_signed_in? && current_user.photo.attached? %>
+    <%= link_to dashboard_path(current_user) do %>
+      <%= cl_image_tag current_user.photo.key, :width => 90, :height => 90, :crop => :thumb, :gravity => :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+    <% end %>
   <% else %>
-    <div class="icon-user">
-      <i class="far fa-user-circle"></i>
-    </div>
+    <%= link_to dashboard_path(current_user) do %>
+      <div class="icon-user">
+        <i class="far fa-user-circle"></i>
+      </div>
+    <% end %>
   <% end %>
 </div>
