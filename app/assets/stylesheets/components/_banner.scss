@@ -8,6 +8,7 @@
 
   .search-bar {
     flex-grow: 1;
+    padding-top: 14px;
   }
 }
 
@@ -42,9 +43,10 @@
 .fingertips h2 {
   text-align: center;
   // font-weight: bold;
-  color: $gray;
-  font-size: 24px;
+  color: whitesmoke;
+  font-size: 20px;
   padding-top: 20px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
 .home-search-bar {
@@ -85,11 +87,31 @@
 .magnifying-style {
   position: absolute;
   right: 28px;
-  top: 10px;
+  top: 7px;
 }
 
 .magnifying-style-suite {
   position: relative;
   margin: 0 auto;
   width: 80%;
+}
+
+.banner-b {
+  text-align: center;
+}
+
+.geolocate-button-banner {
+  background-color: rgba(34, 40, 49, 0.25);
+  border-radius: 30px;
+  padding: 2px 15px;
+  position: absolute;
+  top: 260px;
+
+  .geolink {
+    color: $gray
+  }
+
+  i {
+    font-size: 12px
+  }
 }

@@ -1,6 +1,6 @@
 <div class="banner-home-page">
   <div class="banner-top">
-    <%= image_tag("logo-museum-around.png", class: "logo-img") %>
+    <%= image_tag("logo-museum-around-darker.png", class: "logo-img") %>
   </div>
   <div class='fingertips'>
     <h2>La culture à portée de main</h2>
@@ -14,13 +14,20 @@
       <div class="magnifying-style">
         <i class="fas fa-search"></i>
       </div>
-      <%= f.input :address, placeholder:'Where do you want to go ?', required: false, label: false, input_html: { id:"visit_address" }, class:"search-bar-address-input" %>
+      <%= f.input :address, placeholder:'Où allons-nous ?', required: false, label: false, input_html: { id:"visit_address" }, class:"search-bar-address-input" %>
       </div>
     <%end%>
   </div>
 
+  <div class="geolocate-button-banner">
+    <%= link_to exhibitions_path, class:"geolink" do %>
+      <i class="fas fa-location-arrow pr-1"></i> À proximité
+    <% end %>
+  </div>
+
   <div class="banner-b">
     <a class="banner-bottom" href="#section2">Browse catalogue</a>
+    <br>
     <i class="fas fa-angle-down"></i>
   </div>
 </div>
