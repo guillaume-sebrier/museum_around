@@ -2,3 +2,8 @@
      style="width: 100%; top: 0; bottom: 0; position: absolute;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+<%= form_tag exhibitions_path, method: :get, class: "form-map" do %>
+  <%= select_tag 'category', options_for_select(Exhibition::CATEGORIES || "Toutes categories"), class: 'select-button' %>
+  <%= submit_tag "Filtrer", class: "btn btn-primary btn-sm" %>
+<% end %>
