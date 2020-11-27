@@ -10,7 +10,7 @@ class ExhibitionsController < ApplicationController
       @sites = Site.all
     end
 
-    if params[:category]
+    if params[:category] && params[:category] != ""
       @exhibitions = Exhibition.where(category: params[:category])
     elsif params[:search] && params[:search][:address].present?
       @exhibitions = Exhibition.where(site_id:@sites.map(&:id))
@@ -36,8 +36,12 @@ class ExhibitionsController < ApplicationController
       }
     end
 
-    if params[:category]
+    if params[:category] && params[:category] != ""
       @markers = @markers_exhibition
+    elsif params[:expo] == "Collections temporaires"
+      @markers = @markers_exhibition
+    elsif params[:expo] == "Collections permanentes"
+      @markers = @markers_site
     else
       @markers = @markers_site + @markers_exhibition
     end

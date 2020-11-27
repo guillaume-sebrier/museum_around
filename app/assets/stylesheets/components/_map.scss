@@ -70,5 +70,36 @@
   }
 }
 
+.form-map {
+  position: fixed;
+  top: 60px;
+  right: 40px;
+  z-index: 1000;
 
+  .select-button {
+    height: 30px !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    border: none !important;
+    background-color: white !important;
+    border-radius: 30px;
+    padding: 0 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.07);
+  }
+}
 
+.form-map-expos {
+  position: fixed;
+  top: 60px;
+  left: 8px;
+  z-index: 1000;
+
+  .select-button-expos {
+    height: 30px !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    border: none !important;
+    background-color: white !important;
+    border-radius: 30px;
+    padding: 0 4px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.07);
+  }
+}
