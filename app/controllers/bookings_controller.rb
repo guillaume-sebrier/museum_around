@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+
   def create
     @booking = Booking.new(booking_params)
     @exhibition = Exhibition.find(params[:exhibition_id])
@@ -36,6 +37,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:starting_time, :number_visitors, :status)
+    params.require(:booking).permit(:starting_time, :number_visitors, :status, :date, :time)
   end
 end
