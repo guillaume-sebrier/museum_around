@@ -2,13 +2,21 @@ class ExhibitionsController < ApplicationController
   before_action :set_exhibition, only: %i[show destroy update edit]
 
   def index
+    if params[:search] && params[:search][:address].present?
+      # search_address = Geocoder.search(params[:search][:address])
+      # search_address.first.coordinates
+      @sites = Site.near(params[:search][:address], 2)
+    else
+      @sites = Site.all
+    end
+
     if params[:category]
       @exhibitions = Exhibition.where(category: params[:category])
+    elsif params[:search] && params[:search][:address].present?
+      @exhibitions = Exhibition.where(site_id:@sites.map(&:id))
     else
       @exhibitions = Exhibition.all
     end
-
-    @sites = Site.all
 
     @markers_site = @sites.geocoded.map do |site|
       {
