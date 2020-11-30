@@ -1,5 +1,3 @@
-
-
 function initBrowsecata() {
   $('.banner-b i').on('click', function (e) {
     if (this.hash !== '') {

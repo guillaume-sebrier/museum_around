@@ -47,5 +47,5 @@ document.addEventListener('turbolinks:load', () => {
   submitSelect();
   submitSelectExpos();
   initAutocomplete();
-  initBrowsecata()
+  // initBrowsecata()
 });
