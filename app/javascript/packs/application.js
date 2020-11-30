@@ -49,3 +49,4 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   // initBrowsecata()
 });
+

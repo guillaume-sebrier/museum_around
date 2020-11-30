@@ -34,7 +34,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10',
+      style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
       center: [2.33, 48.85], // Coordonées de Paris par défaut
       zoom: 11
     });
@@ -42,6 +42,11 @@ const initMapbox = () => {
     addMarkersToMap(map, markers);
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl, placeholder: 'Entrez une adresse' }));
     map.addControl(geolocate);
+    // map.fitBounds(bounds, { padding: 30, zoom: 11, duration: 0 });
+    map.on("load", function (e) {
+        const mapContainerEl = document.getElementById("map");
+        mapContainerEl.style.visibility = "visible";
+    });
   }
 };
 

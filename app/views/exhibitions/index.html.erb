@@ -1,7 +1,10 @@
-<div id="map"
-     style="width: 100%; top: 0; bottom: 0; position: absolute;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+<div class="container-map", style="width: 100%; top: 0; bottom: 0; position: absolute; display: grid;">
+  <div id="map"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div id="static"></div>
+</div>
 
 <%= form_tag exhibitions_path, method: :get, class: "form-map" do %>
   <%= select_tag 'category', options_for_select(Exhibition::CATEGORIES), prompt:"Catégories", include_blank: "Toutes", class: 'select-button' %>

@@ -1,4 +1,4 @@
-const submitSearch = () => {
+  const submitSearch = () => {
   const form = document.querySelector(".search");
   // recuper l'element de la loupe queryS
   // ecouter le click .addEventListener
