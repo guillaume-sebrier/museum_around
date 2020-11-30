@@ -7,11 +7,120 @@
   margin: 4px;
 }
 
-
-
 #box-booking-details {
   background: white;
   border-radius: 20px;
   margin-bottom: 15px;
 }
 
+
+.description-show-exhibition {
+  position: relative;
+  p {
+    background-color: #FDC71C;
+    position: absolute;
+    font-weight: bold;
+    bottom: -8px;
+    right: 7px;
+    padding: 2px 3px;
+    border-radius: 4px;
+  }
+}
+
+.img-exhibition-description {
+  border-radius: 15px;
+
+}
+
+.show-description-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.museum-picture-description {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  border: white 1px solid;
+  object-fit: cover;
+}
+
+.museum-description-box {
+  display: flex;
+  align-items: center;
+  margin: 28px 2px;
+   p {
+    color: $gray;
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    }
+  }
+
+#adress-grey-museum {
+  color: #b1a7a6;
+  font-weight: 300px;
+}
+
+.description-exhibition-show {
+  margin-top: 25px;
+  line-height: 33px;
+}
+
+.exhibition-price-show {
+  display: flex;
+  align-items: center;
+  margin-top: 17px;
+  margin-bottom: 30px;
+  i {
+    font-size: 30px;
+    color: #b1a7a6;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.07);
+
+  }
+    p {
+      color: $gray;
+      font-weight: bold;
+      margin-bottom: 0px;
+      margin-left: 15px;
+      font-size: 18px;
+    }
+}
+
+.buttons-show-exhibition {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.review-card-show {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: white;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.07);
+
+}
+
+.btn-avis {
+  color: #FDC71C;
+  padding: 8px 24px;
+  border-radius: 4px;
+  border-color: #FDC71C;
+  background: white;
+  transition: background 0.3s ease;
+  padding: 4px 14px;
+
+  a:active {
+    text-decoration: none !important;
+  }
+}
+
+.white-background-show {
+  height: 235px;
+}

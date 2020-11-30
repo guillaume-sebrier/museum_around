@@ -1,56 +1,76 @@
 
-<p class="box-category text-center"><%= @exhibition.category %></p>
 
-<div class="text-center">
-  <h3>  <%= @exhibition.title %> </h3>
-  <%= image_tag @exhibition.photo, alt: @exhibition.description %>
+
+<div class="description-show-exhibition">
+  <%= image_tag @exhibition.photo, alt: @exhibition.description, class: "img-exhibition-description" %>
+  <p class="box-category-description"><%= @exhibition.category %></p>
 </div>
+
+<div class="container show-description-container">
+  <h4>  <%= @exhibition.title %> </h4>
+</div>
+
 
 <div class="container">
-
-  <p><strong>Description :</strong> <%= @exhibition.description %></p>
-  <% if current_user.admin? %>
-  <%= link_to "Edit", edit_exhibition_path(@exhibition) %>
-  <%= link_to "Delete", exhibition_path(@exhibition), method: :delete, data: { confirm: "Are you sure?" }  %>
-<% end %>
-</div>
-
-<div class="booking-details-show d-flex align-items-center ml-4 mr-4" id="box-booking-details">
-  <div class="booking-collection-show pr-5">
-    <div class="p-2"><i class="fas fa-search"></i> <span class="font-weight-bolder">Catégorie:</span> </i> <%= @exhibition.category %></div>
-    <div class="p-2"><i class="fas fa-map-marker-alt"></i> <span class="font-weight-bolder"> Salle:</span> </i>  <%= @exhibition.site.name %></div>
-    <div class="p-2"><i class="fas fa-map-marker-alt"></i> <span class="font-weight-bolder"> Adresse:</span> </i>  <%= @exhibition.site.address %></div>
-    <div class="p-2"><i class="fas fa-euro-sign"></i> <span class="font-weight-bolder"> Prix: </span></i><%= @exhibition.price %> €</div>
+  <div class="museum-description-box">
+    <% if @exhibition.site.picture %>
+        <%= image_tag @exhibition.site.picture, class:"museum-picture-description" %>
+      <% else %>
+        <%= image_tag "placeholder-museum.jpg", alt: "alttext", class:"museum-picture-description" %>
+      <% end %>
     <div>
-      <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-infos" %>
+      <p> <%= @exhibition.site.name %> </p>
+      <p id="adress-grey-museum"> <%= @exhibition.site.address %> </p>
     </div>
   </div>
+
+  <div class="description-exhibition-show">
+    <p><strong>Description :</strong>
+    <br>
+    <%= @exhibition.description %></p>
+  </div>
+
+  <div class="exhibition-price-show">
+    <i class="fas fa-ticket-alt"></i>
+    <div>
+      <p> <%= @exhibition.price %> € </p>
+    </div>
+  </div>
+
+
+  <div class="buttons-show-exhibition">
+    <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-museum-around" %>
+  </div>
+
 </div>
 
-<div id="review-card-show">
-  <h5 class="review-title p-1 text-center">Commentaires</h5>
-  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-  <ul class="list-group">
-    <% @exhibition.reviews.each do |review| %>
-      <li class="list-group-item">
-      <% review.rating.to_i.times do  %>
-        <i class="fas fa-star"></i>
+
+<div class="container review-card-show">
+  <div>
+    <h5 class="review-title p-1 text-center">Avis</h5>
+    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+    <ul class="list-group">
+      <% @exhibition.reviews.each do |review| %>
+        <li class="list-group-item">
+        <% review.rating.to_i.times do  %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5-review.rating.to_i).times do  %>
+          <i class="far fa-star"></i>
+        <% end %>
+         <strong><%= review.user.first_name %> <%= review.user.last_name %>.</strong> - <%= review.comment %>
+        </li>
       <% end %>
-      <% (5-review.rating.to_i).times do  %>
-        <i class="far fa-star"></i>
-      <% end %>
-       <strong><%= review.user.first_name %> <%= review.user.last_name %>.</strong> - <%= review.comment %>
-      </li>
+    </ul>
+  </div>
+  <div class="px-4 white-background-show">
+    <p>Vous avez aimé ? Faites le nous savoir !</p>
+    <%= simple_form_for [ @exhibition, @review ] do |f| %>
+      <%= f.input :rating, collection: (1..5).to_a, label: false %>
+      <%= f.input :comment, label: false %>
+      <%= f.submit "Valider", class: "btn-museum-around btn-avis" %>
     <% end %>
-  </ul>
-</div>
-<div class="px-4">
-  <p>Cette expo vous a plu ? Faites le nous savoir !</p>
-  <%= simple_form_for [ @exhibition, @review ] do |f| %>
-    <%= f.input :rating, collection: (1..5).to_a, label: false %>
-    <%= f.input :comment, label: false %>
-    <%= f.submit "Valider", class: "btn-infos text-center" %>
-  <% end %>
-</div>
+  </div>
 
 </div>
+
