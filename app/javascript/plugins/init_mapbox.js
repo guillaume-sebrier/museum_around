@@ -24,7 +24,7 @@ const geolocate = new mapboxgl.GeolocateControl({
   enableHighAccuracy: true
   },
   trackUserLocation: true,
-  fitBoundsOptions: { maxZoom:13, duration:0 }
+  fitBoundsOptions: { maxZoom:11, duration:0 }
 });
 
 const initMapbox = () => {
@@ -42,6 +42,9 @@ const initMapbox = () => {
     addMarkersToMap(map, markers);
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl, placeholder: 'Entrez une adresse' }));
     map.addControl(geolocate);
+    map.on('load', function() {
+      geolocate.trigger();
+    });
   }
 };
 

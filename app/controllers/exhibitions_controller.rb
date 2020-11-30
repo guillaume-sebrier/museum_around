@@ -5,7 +5,7 @@ class ExhibitionsController < ApplicationController
     if params[:search] && params[:search][:address].present?
       # search_address = Geocoder.search(params[:search][:address])
       # search_address.first.coordinates
-      @sites = Site.near(params[:search][:address], 2)
+      @sites = Site.near(params[:search][:address], 6)
     else
       @sites = Site.all
     end
