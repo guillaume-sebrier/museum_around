@@ -35,12 +35,12 @@
     object-fit: cover;
     position: relative;
     p {
-      background-color: rgba(253, 199, 28, 0.8);
+      background-color: $yellow;
       position: absolute;
       font-weight: bold;
       bottom: -8px;
       right: 7px;
-      padding: 2px 3px;
+      padding: 1px 4px;
       border-radius: 4px;
     }
   }
