@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_134843) do
+ActiveRecord::Schema.define(version: 2020_11_30_100737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 2020_11_26_134843) do
     t.string "place"
     t.string "date"
     t.boolean "fake", default: true
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
     t.index ["site_id"], name: "index_exhibitions_on_site_id"
   end
 
