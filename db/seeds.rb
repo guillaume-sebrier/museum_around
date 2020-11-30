@@ -74,9 +74,9 @@ Exhibition.destroy_all
 url1 = "https://www.parisinfo.com/ou-sortir-a-paris/infos/guides/calendrier-expositions-paris?perPage=50"
 url2 = "https://www.parisinfo.com/ou-sortir-a-paris/infos/guides/calendrier-expositions-paris?perPage=20&page=4"
 url3 = "https://www.parisinfo.com/ou-sortir-a-paris/infos/guides/calendrier-expositions-paris?perPage=20&page=5"
-scrap_expos (url1)
-scrap_expos (url2)
-scrap_expos (url3)
+scrap_expos2 (url1)
+scrap_expos2 (url2)
+scrap_expos2 (url3)
 
 puts "Finished"
 
