@@ -7,4 +7,6 @@ class Exhibition < ApplicationRecord
 
   validates :title, presence: true
   # validates :category, inclusion: { in: CATEGORIES }
+  geocoded_by :address
+  after_validation :geocode
 end
