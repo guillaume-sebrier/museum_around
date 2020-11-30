@@ -34,7 +34,7 @@ def create_expos_from_html(html_doc)
     address = placeaddress.gsub(place,"").gsub(" - ","")
     description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
     puts "Creating #{title}"
-    exhibition = Exhibition.create(title: title, description: description, site: Site.all.sample, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: Exhibition::CATEGORIES.sample, price: 123)
+    exhibition = Exhibition.create(title: title, description: description, site: Site.all.sample, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: Exhibition::CATEGORIES.sample, price: (7..14).to_a.sample*100)
     #creating fake review to populate database
     Review.create(rating: (2..5).to_a.sample, comment: ["Très belle expo", "Nous avons beaucoup aimé cette expo", "A refaire!", "Belle scénographie", "Très sympa", "GENIAL!!", "Bien sans plus"].sample, user: User.all.sample, exhibition: exhibition)
     sleep(1)

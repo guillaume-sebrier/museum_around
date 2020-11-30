@@ -13,7 +13,7 @@ class ExhibitionsController < ApplicationController
     if params[:category] && params[:category] != ""
       @exhibitions = Exhibition.where(category: params[:category])
     elsif params[:search] && params[:search][:address].present?
-      @exhibitions = Exhibition.where(site_id:@sites.map(&:id))
+      @exhibitions = Exhibition.where(site_id: @sites.map(&:id))
     else
       @exhibitions = Exhibition.all
     end
@@ -29,8 +29,8 @@ class ExhibitionsController < ApplicationController
 
     @markers_exhibition = @exhibitions.map do |exhibition|
       {
-        lat: exhibition.site.latitude,
-        lng: exhibition.site.longitude,
+        lat: exhibition.latitude,
+        lng: exhibition.longitude,
         infoWindow: render_to_string(partial: "info_window_exhibition", locals: { exhibition: exhibition }),
         image_url: helpers.asset_url('pin-exhibitions.png')
       }

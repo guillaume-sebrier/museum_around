@@ -74,6 +74,10 @@ const initMapbox = () => {
     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
     map.addControl(geolocate);
     // map.fitBounds(bounds, { padding: 30, zoom: 11, duration: 0 });
+    map.on("load", function (e) {
+        const mapContainerEl = document.getElementById("map");
+        mapContainerEl.style.visibility = "visible";
+    });
   }
 };
 
