@@ -19,10 +19,18 @@
         </p>
       </div>
       <div class="info-window-link">
+        <!-- <div class="favorite-icon-index">
+          <% if @favorite.user == current_user %>
+            <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+            <i class="fas fa-heart"></i>
+            <% end %>
+          <% else %>
+            <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+          <% end %>
+        </div> -->
         <i class="far fa-heart favorite-icon"></i>
-        <!-- <%#= link_to site_path(site) do %>
-          <i class="fas fa-arrow-right"></i>
-        <%# end %> -->
       </div>
     </div>
   </div>
