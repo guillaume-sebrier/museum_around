@@ -1,5 +1,5 @@
 <div class= "style-boook">
-  <div class="container">
+  <div class="container-narrow">
     <h3 class="my-2 text-center">Réserver votre billet pour </h3>
     <h5 class="mb-2 text-center"><%= @exhibition.title %></h5>
     <h6 class="mb-2 text-center"><em>@<%= @exhibition.site.name %></em></h6>
@@ -9,8 +9,8 @@
             <div class="col">
             <div class="form-card">
               <%= simple_form_for [@exhibition, @booking] do |f| %>
-                <%= f.input :date, label: 'Date', as: :string, input_html: {type: :date} %>
-                <%= f.input :time, label: 'Heure', as: :string, input_html: {type: :time} %>
+                <%= f.input :date, label: 'Quand voulez-vous reserver?', as: :string, type: :text %>
+                <%= f.input :time, label: 'A quelle heure ?', as: :time, minute_step: 15 %>
                 <% if  !@exhibition.site.opening_time.nil? %>
                   <p><em>Heures d'ouverture : <%=@exhibition.site.opening_time %></em></p>
                 <% end %>
@@ -25,3 +25,5 @@
       </div>
   </div>
 </div>
+
+<!-- #f.input :date, label: 'Date', as: :string, input_html: {type: :date} -->

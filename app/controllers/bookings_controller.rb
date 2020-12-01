@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @exhibition = Exhibition.find(params[:exhibition_id])
     @booking.exhibition = @exhibition
     @booking.user = current_user
-    if @booking.save!
+    if @booking.save
       redirect_to dashboard_path
       flash[:notice] = "Ta réservation est validée"
     else
@@ -37,6 +37,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:starting_time, :number_visitors, :status, :date, :time)
+    params.require(:booking).permit(:starting_time, :number_of_tickets, :status, :date, :time)
   end
 end
