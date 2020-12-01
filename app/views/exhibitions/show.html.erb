@@ -1,6 +1,4 @@
 
-
-
 <div class="description-show-exhibition">
   <%= image_tag @exhibition.photo, alt: @exhibition.description, class: "img-exhibition-description" %>
   <p class="box-category-description"><%= @exhibition.category %></p>
@@ -19,8 +17,8 @@
         <%= image_tag "placeholder-museum.jpg", alt: "alttext", class:"museum-picture-description" %>
       <% end %>
     <div>
-      <p> <%= @exhibition.site.name %> </p>
-      <p id="adress-grey-museum"> <%= @exhibition.site.address %> </p>
+      <p> <%= @exhibition.place %> </p>
+      <p id="adress-grey-museum"> <%= @exhibition.address %> </p>
     </div>
   </div>
 
@@ -40,6 +38,20 @@
 
   <div class="buttons-show-exhibition">
     <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-museum-around" %>
+  </div>
+
+  <div>
+    <% if @favorite.user == current_user %>
+      <%= link_to "unfavorite", favorite_path(exhibition_id: @exhibition.id) %>
+      <%#= link_to "unfavorite", favorite_delete_path(@favorite), method: :delete %>
+    <% else %>
+      <%= link_to "favorite", favorite_path(exhibition_id: @exhibition.id) %>
+      <%#= simple_form_for [@exhibition, @favorite] do |f| %>
+        <%#= f.submit "favorite" %>
+      <!-- # <#%= link_to "favorite", exhibition_favorites_path(@exhibition, type: "favorite") %>
+      # <#%= link_to "unfavorite", exhibition_favorites_path(@exhibition, type: "unfavorite") %> -->
+      <% end %>
+
   </div>
 
 </div>

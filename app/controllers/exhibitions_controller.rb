@@ -26,6 +26,11 @@ class ExhibitionsController < ApplicationController
 
   def show
     @review = Review.new
+    if Favorite.find_by(user: current_user, exhibition: @exhibition)
+      @favorite = Favorite.find_by(user: current_user, exhibition: @exhibition)
+    else
+      @favorite = Favorite.new
+    end
   end
 
   def destroy
