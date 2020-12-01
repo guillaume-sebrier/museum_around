@@ -44,9 +44,9 @@ const initMapbox = () => {
     map.addControl(geolocate);
     // map.fitBounds(bounds, { padding: 30, zoom: 11, duration: 0 });
     map.on("load", function (e) {
-        const mapContainerEl = document.getElementById("map");
-        mapContainerEl.style.visibility = "visible";
-        geolocate.trigger();
+      const mapContainerEl = document.getElementById("map");
+      mapContainerEl.style.visibility = "visible";
+      geolocate.trigger();
     });
   }
 };
