@@ -1,7 +1,9 @@
-
 <div class="description-show-exhibition">
   <%= image_tag @exhibition.photo, alt: @exhibition.description, class: "img-exhibition-description" %>
-  <p class="box-category-description"><%= @exhibition.category %></p>
+  <%= link_to :back do %>
+    <p class= "arrow-back-link"><i class="fas fa-arrow-circle-left"></i></p>
+  <% end %>
+  <p class= "<%= @exhibition.category %> show-category-tag" ><%= @exhibition.category%></p>
 </div>
 
 <div class="container show-description-container">
@@ -31,7 +33,7 @@
   <div class="exhibition-price-show">
     <i class="fas fa-ticket-alt"></i>
     <div>
-      <p> <%= @exhibition.price %> € </p>
+      <p> <%= @exhibition.price/100 %> € </p>
     </div>
   </div>
 

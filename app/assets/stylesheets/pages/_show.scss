@@ -16,14 +16,23 @@
 
 .description-show-exhibition {
   position: relative;
-  p {
-    background-color: #FDC71C;
+
+  .show-category-tag {
+    // background-color: #FDC71C;
     position: absolute;
     font-weight: bold;
     bottom: -8px;
     right: 7px;
-    padding: 2px 3px;
+    padding: 1px 4px;
     border-radius: 4px;
+  }
+
+  .arrow-back-link {
+    position: absolute;
+    top: 1px;
+    left: 7px;
+    color: #222831;
+    font-size: 24px;
   }
 }
 
