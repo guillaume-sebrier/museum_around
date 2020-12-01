@@ -3,7 +3,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-  const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
 
     const element = document.createElement('div');
     element.className = 'marker';
@@ -11,6 +11,11 @@ const addMarkersToMap = (map, markers) => {
     element.style.backgroundSize = 'contain';
     element.style.width = '25px';
     element.style.height = '25px';
+
+    const category = marker.category;
+    const layerID = 'poi-' + category;
+
+    // Add a layer for this category type if it hasn't been added already.
 
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
@@ -24,7 +29,8 @@ const geolocate = new mapboxgl.GeolocateControl({
   enableHighAccuracy: true
   },
   trackUserLocation: true,
-  fitBoundsOptions: { maxZoom:10, duration:30 }
+  showAccuracyCircle: false,
+  // fitBoundsOptions: { maxZoom:10, duration:30 }
 });
 
 const initMapbox = () => {
