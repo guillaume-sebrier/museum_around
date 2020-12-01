@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   resources :exhibitions, only: [:index, :show, :edit, :update, :destroy] do
     resources :bookings, only: [:index, :new, :create]
     resources :reviews, only: [:new, :create, :destroy]
-    resources :favorites, only: [:new, :create, :destroy]
+    resources :favorites, only: [:create]
   end
+  resources :favorites, only: [:destroy], as: "favorite_delete"
   resources :users do
     resources :friendships, only: [:new, :create, :index]
-    resources :favorites, only: [:index]
+    # resources :favorites, only: [:index]
   end
   resources :sites, only: [:show, :edit, :update, :destroy]
+  get "/fav", to: "favorites#fav", as: "favorite"
 end

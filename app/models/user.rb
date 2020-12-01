@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :inverse_friendships, class_name: :friendship, foreign_key: :friend_id
   has_many :favorites, dependent: :destroy
+  has_many :exhibitions, through: :favorites
   has_many :reviews, dependent: :destroy
   has_one_attached :photo
 
