@@ -3,11 +3,11 @@
 <div class= "navbar-down-screen border-top py-2">
 
   <%= link_to root_path do %>
-    <i class="fas fa-home"></i>
+    <i class="fas fa-home <%= current_page?(root_path) ? "" : "icon-not-active"  %>"></i>
   <% end %>
 
   <%= link_to exhibitions_path do %>
-    <i class="fas fa-search-location"></i>
+    <i class="fas fa-search-location <%= current_page?(exhibitions_path) ? "" : "icon-not-active" %>"></i>
   <% end %>
 
   <% if user_signed_in? %>
@@ -15,22 +15,19 @@
       <i class="far fa-heart"></i>
     <% end %>
   <% end %>
-
-  <% if user_signed_in? %>
-    <%= link_to user_friendships_path(current_user) do %>
-      <i class="far fa-address-book"></i>
-    <% end %>
-  <% end %>
-
   <% if user_signed_in? && current_user.photo.attached? %>
     <%= link_to dashboard_path(current_user) do %>
-      <%= cl_image_tag current_user.photo.key, :width => 90, :height => 90, :crop => :thumb, :gravity => :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class= "profile-pic <%= current_page?(dashboard_path(current_user)) ? "" : "icon-not-active"  %>">
+        <%= cl_image_tag current_user.photo.key, crop:'crop' %>
+      </div>
     <% end %>
   <% else %>
     <%= link_to dashboard_path(current_user) do %>
-      <div class="icon-user">
+      <div class="icon-user <%= current_page?(dashboard_path(current_user)) ? "" : "icon-not-active" %>">
         <i class="far fa-user-circle"></i>
       </div>
     <% end %>
   <% end %>
 </div>
+
+<!-- gravity:'face', crop:'crop' -->
