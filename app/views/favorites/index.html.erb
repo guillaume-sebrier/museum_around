@@ -1,10 +1,40 @@
 
-<div class="mt-5">
+<div class="banner-favorites">
+<h1>Mes favoris</h1>
+</div>
 
-<% @my_favorites.each do |favorite| %>
-  <%= favorite.exhibition.title %>
 
-<% end %>
+<div class="container">
+
+  <p> <strong><%= current_user.first_name %>, retrouve ici toutes tes expositions favorites :</strong></p>
+
+  <div class="block-recommandations">
+    <% @my_favorites.each do |favorite| %>
+      <div class="card-product-fav">
+        <img src="<%= favorite.exhibition.photo %>" />
+        <div class="card-product-infos-fav">
+          <h2><%= favorite.exhibition.title %></h2>
+          <p> <%= favorite.exhibition.description %> </p>
+        </div>
+        <div class="details-fav-box">
+          <div class="btn btn-infos-fav">
+            <%= link_to "Infos", exhibition_path(favorite.exhibition) %>
+          </div>
+          <div class="favorite-heart">
+            <% if favorite.user == current_user %>
+              <%= link_to favorite_path(exhibition_id: favorite.exhibition.id, origin: params[:action]) do %>
+              <i class="fas fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to favorite_path(exhibition_id: favorite.exhibition.id, origin: params[:action]) do %>
+                <i class="far fa-heart"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
 </div>
 

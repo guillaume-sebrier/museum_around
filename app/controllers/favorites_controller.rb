@@ -35,19 +35,11 @@ class FavoritesController < ApplicationController
       favorite.exhibition = @exhibition
       favorite.save
     end
-    redirect_to exhibition_path(@exhibition)
+    if params[:origin] == "index"
+       redirect_to user_favorites_path(current_user)
+    else
+      redirect_to exhibition_path(@exhibition)
+    end
   end
-  # def favorite
-  #   type = params[:type]
-  #   if type == "favorite"
-  #     current_user.favorites << @exhibition[:id]
-  #     redirect_to :back, notice: "You favorited #{@exhibition.title}"
-  #   elsif type == "unfavorite"
-  #     current_user.favorites.delete(@exhibition)
-  #     redirect_to :back, notice: "Unfavorited #{@exhibition.title}"
-  #   else
-  #     # Type missing, nothing happens
-  #     redirect_to :back, notice: 'Nothing happened.'
-  #   end
-  # end
+
 end
