@@ -1,22 +1,15 @@
 
 <div class="container-map", style="width: 100%; top: 0; bottom: 0; position: absolute; display: grid;">
   <div id="map"
+       style="visibility: hidden"
        data-markers="<%= @markers.to_json %>"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <div id="static"></div>
 </div>
 
-<%= form_tag exhibitions_path, method: :get, class: "form-map" do %>
-  <%= select_tag 'category', options_for_select(Exhibition::CATEGORIES), prompt:"Catégories", include_blank: "Toutes", class: 'select-button' %>
-<% end %>
+<!-- Button trigger modal -->
+<button type="button" id ='filter-button' data-toggle="modal" data-target="#exampleModalCenter">
+  <%= image_tag "filter.svg", alt: "filter", id: 'filter' %>
+</button>
 
-<%= form_tag exhibitions_path, method: :get, class: "form-map-expos" do %>
-  <%= select_tag 'expo', options_for_select(["Collections temporaires","Collections permanentes"]), prompt:"Types de collection", include_blank: "Tous types de collections", class: 'select-button-expos' %>
-<% end %>
-
-<!-- <script>
-  setTimeout(function() {
-    console.log($(".mapboxgl-ctrl-icon"))
-    $(".mapboxgl-ctrl-icon").click();
-  },5000);
-</script> -->
+<%= render 'shared/filter-modal' %>

@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+<!--       <div class="modal-header py-2">
+        <h6 class="modal-title" id="exampleModalLongTitle">Filtrer</h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <%= simple_form_for :search, url: exhibitions_path, method: :get, class: "form-inline" do |f| %>
+          <%= f.input :museum, as: :check_boxes, as: :boolean, input_html: { class: "toggle" }, label: "Collections permanentes?" %>
+          <%= f.input :category, collection: Exhibition::CATEGORIES, as: :check_boxes, include_blank: "Toutes les catégories", input_html: { checked: true, class: "toggle" }, label: 'Collections temporaires - catégories' %>
+          <%= f.button :submit, 'Filtrer!', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

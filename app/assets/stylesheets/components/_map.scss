@@ -73,9 +73,19 @@ option:before {
   grid-row: 1;
   width: 100%;
   height: 100%;
-  visibility: hidden;
 }
 
 :focus {
   outline: none!important;
+}
+
+#filter {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  width: 46px;
+  background-color: $light-gray;
+  color: $gray;
+  padding: 1px;
+  border-radius: 9px;
 }

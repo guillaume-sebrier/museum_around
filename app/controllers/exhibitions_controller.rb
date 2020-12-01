@@ -2,26 +2,36 @@ class ExhibitionsController < ApplicationController
   before_action :set_exhibition, only: %i[show destroy update edit]
 
   def index
-    
     @exhibitions = nil
     @sites = nil
     @markers_site = []
     @markers_exhibition = []
 
-    if params[:category] && params[:category] != ""
+    if params[:category].present?
       @exhibitions = Exhibition.where(category: params[:category])
-    elsif params[:search] && params[:search][:address].present?
-      @sites = Site.near(params[:search][:address], 6)
-      @exhibitions = Exhibition.where(site_id: @sites.map(&:id))
-    elsif params[:expo] == "Collections temporaires"
-      @exhibitions = Exhibition.all
-    elsif params[:expo] == "Collections permanentes"
-      @sites = Site.all
+    end
+
+    if params[:search].present?
+
+      @sites = Site.all if params[:search][:museum].include?("1")
+
+      if params[:search][:address].present?
+        @sites = Site.near(params[:search][:address], 6)
+        @exhibitions = Exhibition.where(site_id: @sites.map(&:id))
+      end
+
+      if params[:search][:category].present?
+        @exhibitions = Exhibition.where(category: params[:search][:category])
+      end
+
     else
       @exhibitions = Exhibition.all
       @sites = Site.all
     end
+
+
     define_markers
+    # raise
   end
 
   def show
@@ -66,7 +76,9 @@ class ExhibitionsController < ApplicationController
           lat: site.latitude,
           lng: site.longitude,
           infoWindow: render_to_string(partial: "info_window_site", locals: { site: site }),
-          image_url: helpers.asset_url('green-pin.png')
+          image_url: helpers.asset_url('green-pin.png'),
+          category: 'Collection permanente',
+          type_expo: 'Collection permanente'
         }
       end
     end
@@ -77,7 +89,9 @@ class ExhibitionsController < ApplicationController
           lat: exhibition.latitude,
           lng: exhibition.longitude,
           infoWindow: render_to_string(partial: "info_window_exhibition", locals: { exhibition: exhibition }),
-          image_url: helpers.asset_url('pin-exhibitions.png')
+          image_url: helpers.asset_url('pin-exhibitions.png'),
+          category: exhibition.category,
+          type_expo: 'Collection temporaire'
         }
       end
     end
