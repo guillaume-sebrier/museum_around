@@ -1,9 +1,11 @@
 .btn-museum-around {
   color: white;
   padding: 8px 24px;
-  border-radius: 4px;
+  border-radius: 20px;
   background: #FDC71C;
   transition: background 0.3s ease;
+  box-shadow: 0 0 15px rgba(0,0,0,0.07);
+
   a:active {
     text-decoration: none !important;
 
