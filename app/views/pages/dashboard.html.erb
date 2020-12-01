@@ -1,18 +1,24 @@
 <div class="banner-dashboard">
-  <a href="profile-pic">
-    <img class="avatar-bordered" alt="avatar-bordered" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
-  </a>
+  <% if current_user.photo.attached? %>
+    <%= cl_image_tag current_user.photo.key, class:"profile-pic-dashboard" %>
+  <% else %>
+    <i class="far fa-user profile-pic-dashboard"></i>
+  <% end %>
   <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn btn-logout" %>
+  <dir class= "welcome-message-banner">
+    <div class="introduction">
+      <h2>Hello, <%= current_user.first_name %></h2>
+      <p>Bienvenue sur ton profil</p>
+    </div>
+  </dir>
 </div>
 
 
 
-<div class="container">
-  <div class="introduction text-center mt-3">
-    <h2>Hello, <%= current_user.first_name %></h2>
-    <p>Bienvenue sur ton profil</p>
-  </div>
 
+<!-- width => 90, :height => 90, :crop => :thumb, :gravity => :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false -->
+
+<div class="container">
 
   <ul class="tabs">
     <li data-tab-target="#bookings-content" class="active tab">Réservations</li>
