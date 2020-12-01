@@ -46,6 +46,7 @@ const initMapbox = () => {
     map.on("load", function (e) {
         const mapContainerEl = document.getElementById("map");
         mapContainerEl.style.visibility = "visible";
+        geolocate.trigger();
     });
   }
 };

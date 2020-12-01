@@ -2,6 +2,7 @@ class ExhibitionsController < ApplicationController
   before_action :set_exhibition, only: %i[show destroy update edit]
 
   def index
+    
     @exhibitions = nil
     @sites = nil
     @markers_site = []
@@ -10,7 +11,7 @@ class ExhibitionsController < ApplicationController
     if params[:category] && params[:category] != ""
       @exhibitions = Exhibition.where(category: params[:category])
     elsif params[:search] && params[:search][:address].present?
-      @sites = Site.near(params[:search][:address], 2)
+      @sites = Site.near(params[:search][:address], 6)
       @exhibitions = Exhibition.where(site_id: @sites.map(&:id))
     elsif params[:expo] == "Collections temporaires"
       @exhibitions = Exhibition.all
