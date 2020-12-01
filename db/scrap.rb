@@ -33,17 +33,19 @@ def create_expos_from_html(html_doc)
     place = placeaddress.match('.*(?= - )').to_s
     address = placeaddress.gsub(place,"").gsub(" - ","")
     description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
+    site = Site.where("name ILIKE ?", place).first
+    site = Site.new(name: "fake site", latitude: 48.85, longitude: 2.33) if site.nil?
     puts "Creating #{title}"
-    exhibition = Exhibition.create(title: title, description: description, site: Site.all.sample, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: Exhibition::CATEGORIES.sample, price: 123)
+    exhibition = Exhibition.create(title: title, description: description, site: site, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: Exhibition::CATEGORIES.sample, price: (7..14).to_a.sample*100)
     #creating fake review to populate database
     Review.create(rating: (2..5).to_a.sample, comment: ["Très belle expo", "Nous avons beaucoup aimé cette expo", "A refaire!", "Belle scénographie", "Très sympa", "GENIAL!!", "Bien sans plus"].sample, user: User.all.sample, exhibition: exhibition)
     sleep(1)
   end
 end
 
-def scrap_expos_v2 (url)
+def scrap_expos2 (url)
   #if open-uri does not work
-  browser = Ferrum::Browser.new(timeout: 10)
+  browser = Ferrum::Browser.new(timeout: 20)
   browser.goto(url)
   html = browser.body
   html_doc = Nokogiri::HTML(html)

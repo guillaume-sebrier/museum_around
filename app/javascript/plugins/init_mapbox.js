@@ -24,7 +24,7 @@ const geolocate = new mapboxgl.GeolocateControl({
   enableHighAccuracy: true
   },
   trackUserLocation: true,
-  fitBoundsOptions: { maxZoom:11, duration:0 }
+  fitBoundsOptions: { maxZoom:10, duration:30 }
 });
 
 const initMapbox = () => {
@@ -34,16 +34,19 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10',
+      style: 'mapbox://styles/mapbox/streets-v10?optimize=true',
       center: [2.33, 48.85], // Coordonées de Paris par défaut
       zoom: 11
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl, placeholder: 'Entrez une adresse' }));
+    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl, placeholder: 'Entrez une adresse', zoom: 11 }));
     map.addControl(geolocate);
-    map.on('load', function() {
-      geolocate.trigger();
+    // map.fitBounds(bounds, { padding: 30, zoom: 11, duration: 0 });
+    map.on("load", function (e) {
+        const mapContainerEl = document.getElementById("map");
+        mapContainerEl.style.visibility = "visible";
+        geolocate.trigger();
     });
   }
 };

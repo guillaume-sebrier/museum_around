@@ -31,7 +31,7 @@ import { submitSelect } from '../components/submit_select';
 import { initStarRating } from '../plugins/init_star_rating';
 import { submitSelectExpos } from '../components/submit_select_expos';
 import { initAutocomplete } from '../plugins/init_autocomplete';
-import { initBrowsecata } from '../components/init_browsecata';
+
 
 
 // Internal imports, e.g:
@@ -49,3 +49,4 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   // initBrowsecata()
 });
+

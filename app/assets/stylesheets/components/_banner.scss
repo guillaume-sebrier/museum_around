@@ -65,6 +65,7 @@
   border-radius: 20px;
   padding: 17px;
   width: 70vw;
+  text-align: center;
 }
 
 .button-search input {
@@ -135,4 +136,8 @@
   i {
     font-size: 12px
   }
+}
+
+.algolia-places {
+  width: auto !important;
 }
