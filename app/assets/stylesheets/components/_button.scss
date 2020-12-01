@@ -1,6 +1,6 @@
 .btn-museum-around {
   color: white;
-  padding: 8px 24px;
+  padding: 10px 24px;
   border-radius: 20px;
   background: #FDC71C;
   transition: background 0.3s ease;
@@ -16,7 +16,30 @@
   }
 }
 
-.btn-museum-around:hover {
+.btn-res-museum-around:hover {
+  background: #FDC71C ;
+  color: white;
+}
+
+.btn-res-museum-around {
+  color: white;
+  padding: 10px 140px;
+  border-radius: 20px;
+  background: #FDC71C;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 15px rgba(0,0,0,0.07);
+
+  a:active {
+    text-decoration: none !important;
+
+  }
+  a:hover {
+    text-decoration: none;
+    cursor:pointer;
+  }
+}
+
+.btn-res-museum-around:hover {
   background: #FDC71C ;
   color: white;
 }
