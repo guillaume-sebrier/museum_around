@@ -1,6 +1,4 @@
 
-
-
 <div class="description-show-exhibition">
   <%= image_tag @exhibition.photo, alt: @exhibition.description, class: "img-exhibition-description" %>
   <p class="box-category-description"><%= @exhibition.category %></p>
@@ -19,8 +17,8 @@
         <%= image_tag "placeholder-museum.jpg", alt: "alttext", class:"museum-picture-description" %>
       <% end %>
     <div>
-      <p> <%= @exhibition.site.name %> </p>
-      <p id="adress-grey-museum"> <%= @exhibition.site.address %> </p>
+      <p> <%= @exhibition.place %> </p>
+      <p id="adress-grey-museum"> <%= @exhibition.address %> </p>
     </div>
   </div>
 
@@ -42,6 +40,17 @@
     <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-museum-around" %>
   </div>
 
+  <div>
+    <% if @favorite.user == current_user %>
+      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+      <i class="fas fa-heart"></i>
+      <% end %>
+    <% else %>
+      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+        <i class="far fa-heart"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 

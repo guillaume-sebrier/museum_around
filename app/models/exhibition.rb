@@ -1,5 +1,5 @@
 class Exhibition < ApplicationRecord
-  CATEGORIES = ['Peinture', 'Sculpture', 'Street Art', 'Contemporain', 'Design', 'Photographie', 'Architecture', 'Cinéma', 'Histoire', 'Musique']
+  CATEGORIES = ['Peinture', 'Sculpture', 'Street-Art', 'Contemporain', 'Design', 'Photographie', 'Architecture', 'Cinema', 'Histoire', 'Musique']
   belongs_to :site
   has_many :bookings, dependent: :destroy
   has_many :reviews, dependent: :destroy

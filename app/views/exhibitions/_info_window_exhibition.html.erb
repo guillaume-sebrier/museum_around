@@ -1,23 +1,25 @@
-<div class="info-window-card">
-  <div class="info-window-img-top">
-    <%= image_tag exhibition.photo, class:"info-window-img-top" %>
-    <p><%= exhibition.category %></p>
-  </div>
-  <div class="info-window-title">
-      <p><%= exhibition.title %></p>
-  </div>
-  <div class="info-window-body">
-    <div>
-      <p><i class="fas fa-map-marker-alt pr-1"></i><%= exhibition.place %>
-        <br>
-        Date de fin : <%= exhibition.ending_date %>
-      </p>
+<%= link_to exhibition_path(exhibition) do %>
+  <div class="info-window-card">
+    <div class="info-window-img-top">
+      <%= image_tag exhibition.photo, class:"info-window-img-top" %>
+      <p class= "<%= exhibition.category %>" ><%= exhibition.category%></p>
     </div>
-    <div class="info-window-link">
-      <i class="far fa-heart favorite-icon"></i>
-      <%= link_to exhibition_path(exhibition) do %>
-        <i class="fas fa-arrow-right"></i>
-      <% end %>
+    <div class="info-window-title">
+        <p><%= exhibition.title %></p>
+    </div>
+    <div class="info-window-body">
+      <div>
+        <p><i class="fas fa-map-marker-alt pr-1"></i><%= exhibition.place %>
+          <br>
+          Date de fin : <%= exhibition.ending_date %>
+        </p>
+      </div>
+      <div class="info-window-link">
+        <i class="far fa-heart favorite-icon"></i>
+  <!--       <%#= link_to exhibition_path(exhibition) do %>
+          <i class="fas fa-arrow-right"></i>
+        <#% end %> -->
+      </div>
     </div>
   </div>
-</div>
+<% end %>

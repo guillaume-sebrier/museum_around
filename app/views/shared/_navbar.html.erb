@@ -11,8 +11,8 @@
   <% end %>
 
   <% if user_signed_in? %>
-    <%= link_to exhibition_favorites_path(current_user) do %>
-      <i class="far fa-heart" ></i>
+    <%= link_to user_favorites_path(current_user) do %>
+      <i class="far fa-heart"></i>
     <% end %>
   <% end %>
   <% if user_signed_in? && current_user.photo.attached? %>
