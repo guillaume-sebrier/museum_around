@@ -40,8 +40,27 @@
 
 .show-description-container {
   margin-top: 15px;
-  text-align: center;
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+
+  h4 {
+    text-align: center;
+    margin: 0;
+    width: 90%;
+  }
 }
+
+  .favorite-icon-show {
+    position: absolute;
+    right: 14px;
+    font-size: 20px;
+
+    a {
+      color: #c24914;
+    }
+  }
 
 .museum-picture-description {
   width: 60px;
@@ -99,13 +118,16 @@
 
 .buttons-show-exhibition {
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 40px;
+  // margin-top: 30px;
+  // margin-bottom: 40px;
+  position: fixed;
+  bottom: 75px;
+  z-index: 1;
 }
 
 .review-card-show {
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   background-color: white;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
@@ -129,4 +151,8 @@
 
 .white-background-show {
   height: 235px;
+}
+
+.posted-reviews-show {
+  margin-bottom: 10px;
 }
