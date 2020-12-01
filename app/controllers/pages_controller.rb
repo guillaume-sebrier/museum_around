@@ -14,4 +14,8 @@ class PagesController < ApplicationController
     @bookings_futur = Booking.where("date > ?", Date.today)
     @bookings_passed = Booking.where("date < ?", Date.today)
   end
+
+  def favorites
+    @favorites = Favorite.all
+  end
 end

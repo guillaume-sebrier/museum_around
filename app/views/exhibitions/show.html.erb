@@ -42,18 +42,15 @@
 
   <div>
     <% if @favorite.user == current_user %>
-      <%= link_to "unfavorite", favorite_path(exhibition_id: @exhibition.id) %>
-      <%#= link_to "unfavorite", favorite_delete_path(@favorite), method: :delete %>
-    <% else %>
-      <%= link_to "favorite", favorite_path(exhibition_id: @exhibition.id) %>
-      <%#= simple_form_for [@exhibition, @favorite] do |f| %>
-        <%#= f.submit "favorite" %>
-      <!-- # <#%= link_to "favorite", exhibition_favorites_path(@exhibition, type: "favorite") %>
-      # <#%= link_to "unfavorite", exhibition_favorites_path(@exhibition, type: "unfavorite") %> -->
+      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+      <i class="fas fa-heart"></i>
       <% end %>
-
+    <% else %>
+      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+        <i class="far fa-heart"></i>
+      <% end %>
+    <% end %>
   </div>
-
 </div>
 
 
