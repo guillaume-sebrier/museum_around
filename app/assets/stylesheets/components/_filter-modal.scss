@@ -23,8 +23,12 @@
   border-radius: 50rem;
 }
 
-.toggle:checked + label::before {
+.toggle-yellow:checked + label::before {
   background-color: $yellow;
+}
+
+.toggle-green:checked + label::before {
+  background-color: #35663e;
 }
 
 .toggle + label::after {
@@ -66,3 +70,4 @@
 .subtitle-form {
   margin: 8px 0px;
 }
+
