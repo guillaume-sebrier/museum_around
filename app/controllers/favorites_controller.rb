@@ -45,12 +45,11 @@ class FavoritesController < ApplicationController
       format.js
     end
     # redirect_to exhibition_path(@exhibition)
-    
-    # if params[:origin] == "index"
-      # redirect_to user_favorites_path(current_user)
-    # else
-      # redirect_to exhibition_path(@exhibition)
-    # end
-  end
 
+    if params[:origin] == "index"
+      redirect_to user_favorites_path(current_user)
+    else
+      redirect_to exhibition_path(@exhibition)
+    end
+  end
 end
