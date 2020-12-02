@@ -24,16 +24,14 @@ class ExhibitionsController < ApplicationController
       @sites = Site.all
     end
 
+    # raise
+    set_favorites
     define_markers
   end
 
   def show
     @review = Review.new
-    if Favorite.find_by(user: current_user, exhibition: @exhibition)
-      @favorite = Favorite.find_by(user: current_user, exhibition: @exhibition)
-    else
-      @favorite = Favorite.new
-    end
+    set_favorite
   end
 
   def destroy
@@ -90,5 +88,17 @@ class ExhibitionsController < ApplicationController
     end
 
     @markers = @markers_site + @markers_exhibition
+  end
+
+  def set_favorite
+    if Favorite.find_by(user: current_user, exhibition: @exhibition)
+      @favorite = Favorite.find_by(user: current_user, exhibition: @exhibition)
+    else
+      @favorite = Favorite.new
+    end
+  end
+
+  def set_favorites
+    @favorites = current_user.favorites
   end
 end
