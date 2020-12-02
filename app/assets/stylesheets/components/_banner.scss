@@ -1,5 +1,5 @@
 .banner-home-page {
-  height: 55vh;
+  height: 57vh;
   background-color: #fbb034;
   background-image: linear-gradient(315deg, #fbb034 0%, #ffd700 74%);
   display: flex;
@@ -30,8 +30,9 @@
 }
 
 .logo-img {
-  width: 80vw;
+  width: 91vw;
   margin-top: 50px;
+  margin-left: 15px;
 }
 
 
@@ -45,6 +46,7 @@
   // font-weight: bold;
   color: whitesmoke;
   font-size: 20px;
+  font-weight: bold;
   padding-top: 20px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
@@ -66,6 +68,7 @@
   padding: 17px;
   width: 70vw;
   text-align: center;
+  margin-top: 18px;
 }
 
 .button-search input {
@@ -125,8 +128,8 @@
   background-color: rgba(34, 40, 49, 0.25);
   border-radius: 30px;
   padding: 2px 15px;
-  position: absolute;
-  top: 260px;
+  // position: absolute;
+  // top: 260px;
 
   .geolink {
     color: $gray
