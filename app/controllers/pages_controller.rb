@@ -10,9 +10,9 @@ class PagesController < ApplicationController
   def dashboard
     @last_chance_exhibitions = Exhibition.order(:ending_date).first(10)
     @suggested_exhibitions = Exhibition.last(10)
-    @bookings = Booking.all
-    @bookings_futur = Booking.where("date > ?", Date.today)
-    @bookings_passed = Booking.where("date < ?", Date.today)
+    @bookings = Booking.where(user: current_user)
+    @bookings_futur = @bookings.where("date > ?", Date.today)
+    @bookings_passed = @bookings.where("date < ?", Date.today)
   end
 
   def favorites
