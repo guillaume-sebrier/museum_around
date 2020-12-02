@@ -1,6 +1,7 @@
 .toggle {
   position: absolute;
   transform: scale(0);
+  margin-bottom: 4px;
 }
 
 .toggle + label {
@@ -42,4 +43,18 @@
 
 .toggle:checked + label::after {
   left: 18px;
+}
+
+.modal-button-wrapper {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.form-check {
+  padding: 0 !important;
+}
+
+.col-form-label {
+  font-weight: bold !important;
 }

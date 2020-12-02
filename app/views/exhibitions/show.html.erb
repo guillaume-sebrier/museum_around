@@ -47,11 +47,7 @@
       <p> <%= @exhibition.price/100 %> € </p>
     </div>
   </div>
-
-
-  <div class="buttons-show-exhibition">
-    <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-res-museum-around" %>
-  </div>
+  <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-res-museum-around buttons-show-exhibition" %>
 </div>
 
 

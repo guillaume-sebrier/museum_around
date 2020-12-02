@@ -4,24 +4,34 @@ class ExhibitionsController < ApplicationController
   def index
     @exhibitions = nil
     @sites = nil
+    @museum = false
     @markers_site = []
     @markers_exhibition = []
 
     if params[:search].present?
 
-      @sites = Site.all if params[:search][:museum].include?("1")
-      @exhibitions = Exhibition.where(category: params[:search][:category]) if params[:search][:category].present?
+      if params[:search][:museum].include?("1")
+        @sites = Site.all
+        @museum = true
+      end
 
+      @categories = Exhibition::CATEGORIES.select { |category| params[:search][category] == '1' }
+      @exhibitions = Exhibition.where(category: @categories)
       if params[:search][:address].present?
         @sites = Site.near(params[:search][:address], 6)
+        @museum = true
         @exhibitions = Exhibition.where(site_id: @sites.map(&:id))
+        @categories = Exhibition::CATEGORIES
       end
 
     elsif params[:category].present?
       @exhibitions = Exhibition.where(category: params[:category])
+      @categories = params[:category]
     else
       @exhibitions = Exhibition.all
+      @categories = Exhibition::CATEGORIES
       @sites = Site.all
+      @museum = true
     end
 
     define_markers
