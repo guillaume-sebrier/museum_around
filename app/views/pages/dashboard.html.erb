@@ -71,7 +71,7 @@
 
 
     <div id="last-chance-content" data-tab-content>
-      <p class="header-tab">Dernières chances</p>
+      <p class="header-tab"></p>
       <p><%= current_user.first_name %>, ces expositions arrivent bientôt à leur terme ! Dépêche-toi :</p>
 
       <div class="block-notifications">
@@ -84,7 +84,7 @@
                 <p><strong> <%= exhibition.title %></strong></p>
                 <p id="museum-description"><%= exhibition.site.name %></p>
               </div>
-              <div class="btn btn-infos">
+              <div class="btn btn-infos-fav">
                 <%= link_to "infos", exhibition_path(:id) %>
               </div>
             </div>
@@ -96,8 +96,8 @@
 
 
     <div id="recommandations-content" data-tab-content>
-      <p class="header-tab">Suggestions</p>
-      <p>Ces expositions sont susceptibles de t'intéresser, jette un coup d'oeil :</p>
+      <p class="header-tab"></p>
+      <p>Ces expositions sont susceptibles de t'intéresser, jettes-y un coup d'oeil :</p>
 
       <div class="block-recommandations">
         <% @suggested_exhibitions.each do |exhibition| %>
