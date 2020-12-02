@@ -1,29 +1,43 @@
-<div class= "style-boook">
-  <div class="container-narrow">
-    <h3 class="my-2 text-center">Réserver votre billet pour </h3>
-    <h5 class="mb-2 text-center"><%= @exhibition.title %></h5>
-    <h6 class="mb-2 text-center"><em>@<%= @exhibition.site.name %></em></h6>
-    <h6 class="mb-2 text-center"><em><%= @exhibition.site.address %></em></h6>
-      <div class="row">
+
+<div class="banner-bookings">
+  <%= link_to :back do %>
+    <p class= "arrow-back-link-bookings"><i class="fas fa-arrow-circle-left"></i></p>
+  <% end %>
+  <h3>Réservez votre billet</h3>
+</div>
+
+
+<div class="container booking-page-details">
+  <div class="infos-booking-page">
+    <p class= "<%= @exhibition.category %> booking-category-tag" ><%= @exhibition.category%></p>
+    <p class="paris-tag-bookings"> Paris </p>
+  </div>
+  <h3><%= @exhibition.title %></h3>
+  <h6><em>@<%= @exhibition.site.name %></em></h6>
+  <h6><em><%= @exhibition.site.address %></em></h6>
+    <div class="row">
         <div class="formulaire-style">
             <div class="col">
             <div class="form-card">
               <%= simple_form_for [@exhibition, @booking] do |f| %>
-                <%= f.input :date, label: 'Quand voulez-vous reserver?', as: :string, type: :text %>
+                <%= f.input :date, label: 'A quelle date souhaitez-vous réserver ?', as: :string, type: :text %>
                 <%= f.input :time, label: 'A quelle heure ?', as: :time, minute_step: 15 %>
                 <% if  !@exhibition.site.opening_time.nil? %>
                   <p><em>Heures d'ouverture : <%=@exhibition.site.opening_time %></em></p>
                 <% end %>
-                <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Combien de billets' %>
+                <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Nombre de billets' %>
                 <div class="submit-button">
-                  <%= f.submit "Réservez votre visite !", class: "font-weight-bold btn btn-info btn-lg" %>
+                  <%= f.submit "Je réserve !", class: "font-weight-bold btn btn-info btn-lg" %>
                 </div>
               <% end %>
             </div>
           </div>
         </div>
       </div>
-  </div>
+
+
 </div>
+
+
 
 <!-- #f.input :date, label: 'Date', as: :string, input_html: {type: :date} -->
