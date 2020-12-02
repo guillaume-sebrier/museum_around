@@ -58,21 +58,19 @@
       <p class="header-tab">Tes visites passées</p>
 
       <% @bookings_passed.each do |booking| %>
-        <div class="notification-group">
-          <div class="notification">
-            <img src= "<%= booking.exhibition.photo %>" class="avatar-large" />
-            <div class="notification-content">
-              <p><small>Réservations</small></p>
-              <p><strong> <%= booking.exhibition.title %></strong></p>
-              <p id="museum-description"><%= booking.exhibition.site.name %></p>
-            </div>
-            <div class="btn btn-infos-fav">
-              <%= link_to "Détails", exhibition_path(:id) %>
+        <%= link_to exhibition_path(booking.exhibition.id) do %>
+          <div class="notification-group">
+            <div class="notification">
+              <img src= "<%= booking.exhibition.photo %>" class="avatar-large" />
+              <div class="notification-content">
+                <p><small>Réservations</small></p>
+                <p><strong> <%= booking.exhibition.title %></strong></p>
+                <p id="museum-description"><%= booking.exhibition.site.name %></p>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-
     </div>
 
 
@@ -84,19 +82,18 @@
 
       <div class="block-notifications">
         <% @last_chance_exhibitions.each do |exhibition| %>
-          <div class="notification-group">
-            <div class="notification">
-              <img src= "<%= exhibition.photo %>" class="avatar-large" />
-              <div class="notification-content">
-                <p><small>Jusqu'au <%= exhibition.ending_date %></small></p>
-                <p><strong> <%= exhibition.title %></strong></p>
-                <p id="museum-description"><%= exhibition.site.name %></p>
-              </div>
-              <div class="btn btn-infos-fav">
-                <%= link_to "Infos", exhibition_path(:id) %>
+          <%= link_to exhibition_path(exhibition.id) do %>
+            <div class="notification-group">
+              <div class="notification">
+                <img src= "<%= exhibition.photo %>" class="avatar-large" />
+                <div class="notification-content">
+                  <p><small>Jusqu'au <%= exhibition.ending_date %></small></p>
+                  <p><strong> <%= exhibition.title %></strong></p>
+                  <p id="museum-description"><%= exhibition.site.name %></p>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -109,13 +106,15 @@
 
       <div class="block-recommandations">
         <% @suggested_exhibitions.each do |exhibition| %>
-        <div class="card-product">
-          <img src="<%= exhibition.photo %>" />
-          <div class="card-product-infos">
-            <h2><%= exhibition.title %></h2>
-            <p> <%= exhibition.description %> </p>
-          </div>
-        </div>
+          <%= link_to exhibition_path(exhibition.id) do %>
+            <div class="card-product">
+              <img src="<%= exhibition.photo %>" />
+              <div class="card-product-infos">
+                <h2><%= exhibition.title %></h2>
+                <p> <%= exhibition.description %> </p>
+              </div>
+            </div>
+          <% end %>
        <% end %>
       </div>
     </div>
