@@ -30,21 +30,29 @@
   <div class="class-content">
     <div id="bookings-content" data-tab-content class="active">
       <p class="header-tab">Tes visites à venir</p>
-
-      <% @bookings_futur. each do |booking| %>
-      <div class="notification-group">
-        <div class="notification">
-          <img src= "<%= booking.exhibition.photo %>" class="avatar-large" />
-          <div class="notification-content">
-            <p><small>Réservation</small></p>
-            <p><strong> <%= booking.exhibition.title %></strong></p>
-            <p id="museum-description"><%= booking.exhibition.site.name %></p>
-          </div>
-          <div class="btn btn-infos">
-            <%= link_to "Détails", exhibition_path(:id) %>
+      <% i = 0 %>
+        <% @bookings_futur.each do |booking| %>
+        <% @booking = booking %>
+        <div class="notification-group">
+          <div class="notification">
+            <img src= "<%= booking.exhibition.photo %>" class="avatar-large" />
+            <div class="notification-content">
+              <p><small>Réservation</small></p>
+              <p><strong> <%= booking.exhibition.title %></strong></p>
+              <p id="museum-description"><%= booking.exhibition.site.name %></p>
+            </div>
+            <div class="btn btn-infos">
+              <!-- <button type="button" id ='ticket-button' data-toggle="modal" data-target="#ticket-modal">
+                Ticket
+              </button> -->
+              <button type="button" class="btn btn-infos-fav" data-toggle="modal" data-target="#ticketModal<%= i %>">
+                Ticket
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+<%=render 'shared/ticket-modal', i:i %>
+        <% i += 1 %>
       <% end %>
 
       <p class="header-tab">Tes visites passées</p>
@@ -59,7 +67,7 @@
               <p id="museum-description"><%= booking.exhibition.site.name %></p>
             </div>
             <div class="btn btn-infos">
-              <%= link_to "détails", exhibition_path(:id) %>
+              <%= link_to "détails", exhibition_path(exhibition) %>
             </div>
           </div>
         </div>
@@ -85,7 +93,7 @@
                 <p id="museum-description"><%= exhibition.site.name %></p>
               </div>
               <div class="btn btn-infos">
-                <%= link_to "infos", exhibition_path(:id) %>
+                <%= link_to "infos", exhibition_path(exhibition) %>
               </div>
             </div>
           </div>
@@ -113,4 +121,5 @@
     </div>
   </div>
 </div>
+
 

@@ -30,6 +30,10 @@ class BookingsController < ApplicationController
     @exhibition = Exhibition.find(params[:exhibition_id])
   end
 
+  def ticket
+    set_booking
+  end
+
   private
 
   def set_booking

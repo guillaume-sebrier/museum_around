@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   end
   resources :sites, only: [:show, :edit, :update, :destroy]
   get "/fav", to: "favorites#fav", as: "favorite"
+  get "/ticket", to: "bookings#ticket", as: "ticket"
 end
