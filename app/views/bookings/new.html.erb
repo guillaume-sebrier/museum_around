@@ -20,7 +20,7 @@
             <div class="col">
             <div class="form-card">
               <%= simple_form_for [@exhibition, @booking] do |f| %>
-                <%= f.input :date, label: 'A quelle date souhaitez-vous réserver ?', as: :string, type: :text %>
+                <%= f.input :date, label: 'A quelle date souhaitez-vous réserver ?', as: :string, input_html: {type: :date} %>
                 <%= f.input :time, label: 'A quelle heure ?', as: :time, minute_step: 15 %>
                 <% if  !@exhibition.site.opening_time.nil? %>
                   <p><em>Heures d'ouverture : <%=@exhibition.site.opening_time %></em></p>

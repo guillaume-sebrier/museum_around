@@ -24,8 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import flatpickr from "flatpickr";
-import { French } from "flatpickr/dist/l10n/fr.js"
+// import flatpickr from "flatpickr";
+// import { French } from "flatpickr/dist/l10n/fr.js"
 
 
 
@@ -38,7 +38,7 @@ import { submitSelect } from '../components/submit_select';
 import { initStarRating } from '../plugins/init_star_rating';
 import { submitSelectExpos } from '../components/submit_select_expos';
 import { initAutocomplete } from '../plugins/init_autocomplete';
-import { initFlatpickr } from '../plugins/init_flatpickr';
+// import { initFlatpickr } from '../plugins/init_flatpickr';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -50,7 +50,7 @@ document.addEventListener('turbolinks:load', () => {
   submitSelect();
   submitSelectExpos();
   initAutocomplete();
-  initFlatpickr();
+  // initFlatpickr();
   // initBrowsecata()
 });
 
