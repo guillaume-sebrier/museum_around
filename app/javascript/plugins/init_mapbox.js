@@ -30,7 +30,7 @@ const geolocate = new mapboxgl.GeolocateControl({
   },
   trackUserLocation: true,
   showAccuracyCircle: false,
-  // fitBoundsOptions: { maxZoom:10, duration:30 }
+  fitBoundsOptions: { maxZoom:11, duration:2 }
 });
 
 const initMapbox = () => {
