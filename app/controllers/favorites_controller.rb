@@ -40,16 +40,14 @@ class FavoritesController < ApplicationController
 
     @favorites = current_user.favorites
     respond_to do |format|
-      format.html
-        # redirect_back(fallback_location: exhibitions_path)
+      format.html {
+        if params[:origin] == "index"
+          redirect_to user_favorites_path(current_user)
+        else
+          redirect_to exhibition_path(@exhibition)
+        end
+      }
       format.js
-    end
-    # redirect_to exhibition_path(@exhibition)
-
-    if params[:origin] == "index"
-      redirect_to user_favorites_path(current_user)
-    else
-      redirect_to exhibition_path(@exhibition)
     end
   end
 end
