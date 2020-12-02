@@ -5,18 +5,20 @@
   background-image: linear-gradient(315deg, #fbb034 0%, #ffd700 74%);
   display: flex;
   align-items: center;
+  margin-bottom: 16px;
 }
 
 .btn-logout {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 7px;
+  right: 7px;
   color: white;
   padding: 6px 12px;
   border-radius: 10px;
   background: orange;
   transition: background 0.3s ease;
   font-weight: 300;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .btn-logout:hover {
@@ -28,14 +30,29 @@
 //   width: 120px;
 //   border-radius: 20%;
 //   box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-//   // border: white 2px solid;
+//   border: white 2px solid;
 //   margin-top: 45px;
 //   margin-left: 20px;
 // }
 
 .introduction p {
-  color: grey;
+  color: white;
+  font-weight: bold;
 }
+
+.introduction h2 {
+  color: white;
+  font-weight: bold;
+}
+
+.welcome-message-banner {
+  text-align: center;
+  display: block;
+  padding: 33px;
+  margin-top: 33px;
+  margin-left: -5px;
+}
+
 
 [data-tab-content] {
   display: none;
@@ -62,13 +79,13 @@
 
 .tab.active {
   background-color: #FDC71C;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
   font-weight: bold;
 }
 
 .tab:hover {
   background-color: #FDC71C;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .class-content {
@@ -81,15 +98,15 @@
   font-weight: bold;
 }
 
-
 .card-product {
   overflow: hidden;
   height: 120px;
   background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   display: flex;
   align-items: center;
   margin-bottom: 14px;
+  min-height: 135px;
 }
 
 .card-product img {

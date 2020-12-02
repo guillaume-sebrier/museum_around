@@ -4,43 +4,44 @@ class ExhibitionsController < ApplicationController
   def index
     @exhibitions = nil
     @sites = nil
+    @museum = false
     @markers_site = []
     @markers_exhibition = []
 
-    if params[:category].present?
-      @exhibitions = Exhibition.where(category: params[:category])
-    end
-
     if params[:search].present?
 
-      @sites = Site.all if params[:search][:museum].include?("1")
+      if params[:search][:museum].include?("1")
+        @sites = Site.all
+        @museum = true
+      end
 
+      @categories = Exhibition::CATEGORIES.select { |category| params[:search][category] == '1' }
+      @exhibitions = Exhibition.where(category: @categories)
       if params[:search][:address].present?
         @sites = Site.near(params[:search][:address], 6)
+        @museum = true
         @exhibitions = Exhibition.where(site_id: @sites.map(&:id))
+        @categories = Exhibition::CATEGORIES
       end
 
-      if params[:search][:category].present?
-        @exhibitions = Exhibition.where(category: params[:search][:category])
-      end
-
+    elsif params[:category].present?
+      @exhibitions = Exhibition.where(category: params[:category])
+      @categories = params[:category]
     else
       @exhibitions = Exhibition.all
+      @categories = Exhibition::CATEGORIES
       @sites = Site.all
+      @museum = true
     end
 
-
-    define_markers
     # raise
+    set_favorites
+    define_markers
   end
 
   def show
     @review = Review.new
-    if Favorite.find_by(user: current_user, exhibition: @exhibition)
-      @favorite = Favorite.find_by(user: current_user, exhibition: @exhibition)
-    else
-      @favorite = Favorite.new
-    end
+    set_favorite
   end
 
   def destroy
@@ -97,5 +98,17 @@ class ExhibitionsController < ApplicationController
     end
 
     @markers = @markers_site + @markers_exhibition
+  end
+
+  def set_favorite
+    if Favorite.find_by(user: current_user, exhibition: @exhibition)
+      @favorite = Favorite.find_by(user: current_user, exhibition: @exhibition)
+    else
+      @favorite = Favorite.new
+    end
+  end
+
+  def set_favorites
+    @favorites = current_user.favorites
   end
 end

@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @index = true
-      if @index = $yellow
+    if @index == $yellow
     end
   end
 

@@ -9,10 +9,14 @@
         </button>
       </div> -->
       <div class="modal-body">
+        <h5><strong>Mes filtres</strong></h5>
         <%= simple_form_for :search, url: exhibitions_path, method: :get, class: "form-inline" do |f| %>
-          <%= f.input :museum, as: :check_boxes, as: :boolean, input_html: { class: "toggle" }, label: "Collections permanentes?" %>
-          <%= f.input :category, collection: Exhibition::CATEGORIES, as: :check_boxes, include_blank: "Toutes les catégories", input_html: { checked: true, class: "toggle" }, label: 'Collections temporaires - catégories' %>
-          <%= f.button :submit, 'Filtrer!', class: 'btn btn-primary' %>
+          <%= f.input :museum, as: :boolean, input_html: {checked: @museum, class: "toggle" }, label: "Collections permanentes" %>
+          <h6 class = 'subtitle-form'><strong>Collections temporaires - catégories</strong></h6>
+          <% Exhibition::CATEGORIES.each do |category| %>
+            <%= f.input category, as: :boolean, input_html: {checked: @categories.include?(category), class: "toggle" } %>
+          <% end %>
+          <%= f.button :submit, 'Découvrir !', class: 'btn-res-museum-around-modal' %>
         <% end %>
       </div>
     </div>

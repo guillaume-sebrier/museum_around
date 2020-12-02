@@ -12,6 +12,7 @@
 .notification .notification-content {
   flex-grow: 1;
   padding: 0 8px;
+  min-height: 90px;
 }
 
 .notification p {
@@ -61,7 +62,8 @@
 
 .avatar-large {
     width: 25%;
-    border-radius: 20%
+    border-radius: 5px;
+    height: 74px;
 }
 
 .notification-group {
@@ -72,12 +74,4 @@
   margin-bottom: 25px;
 }
 
-.welcome-message-banner {
-  text-align: center;
-  display: block;
-  padding: 33px;
-}
 
-.profile-pic-dashboard {
-  boder: none;
-}

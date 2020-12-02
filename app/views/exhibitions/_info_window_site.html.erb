@@ -1,12 +1,11 @@
 <%= link_to site_path(site) do %>
   <div class="info-window-card">
     <div class="info-window-img-top">
-      <% if site.picture %>
+      <% if site.picture == 'placeholder' %>
         <%= image_tag site.picture, class:"info-window-img-top" %>
       <% else %>
         <%= image_tag "placeholder-museum-min.png", alt: "alttext", class:"info-window-img-top" %>
       <% end %>
-      <!-- <p><%#= exhibition.category %></p> -->
     </div>
     <div class="info-window-title">
         <p><%= site.name %></p>
@@ -19,10 +18,7 @@
         </p>
       </div>
       <div class="info-window-link">
-        <i class="far fa-heart favorite-icon"></i>
-        <!-- <%#= link_to site_path(site) do %>
-          <i class="fas fa-arrow-right"></i>
-        <%# end %> -->
+        <!-- <i class="far fa-heart favorite-icon"></i> -->
       </div>
     </div>
   </div>

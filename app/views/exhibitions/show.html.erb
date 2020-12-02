@@ -1,11 +1,24 @@
-
 <div class="description-show-exhibition">
   <%= image_tag @exhibition.photo, alt: @exhibition.description, class: "img-exhibition-description" %>
-  <p class="box-category-description"><%= @exhibition.category %></p>
+  <%= link_to :back do %>
+    <p class= "arrow-back-link"><i class="fas fa-arrow-circle-left"></i></p>
+  <% end %>
+  <p class= "<%= @exhibition.category %> show-category-tag" ><%= @exhibition.category%></p>
 </div>
 
 <div class="container show-description-container">
   <h4>  <%= @exhibition.title %> </h4>
+  <div class="favorite-icon-show">
+    <% if @favorite.user == current_user %>
+      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+      <i class="fas fa-heart"></i>
+      <% end %>
+    <% else %>
+      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+        <i class="far fa-heart"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 
@@ -31,36 +44,30 @@
   <div class="exhibition-price-show">
     <i class="fas fa-ticket-alt"></i>
     <div>
-      <p> <%= @exhibition.price %> € </p>
+      <p> <%= @exhibition.price/100 %> € </p>
     </div>
   </div>
-
-
-  <div class="buttons-show-exhibition">
-    <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-museum-around" %>
-  </div>
-
-  <div>
-    <% if @favorite.user == current_user %>
-      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
-      <i class="fas fa-heart"></i>
-      <% end %>
-    <% else %>
-      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
-        <i class="far fa-heart"></i>
-      <% end %>
-    <% end %>
-  </div>
+  <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-res-museum-around buttons-show-exhibition" %>
 </div>
 
 
 <div class="container review-card-show">
   <div>
     <h5 class="review-title p-1 text-center">Avis</h5>
+  </div>
+  <div class="px-4 white-background-show">
+    <p>Vous avez aimé ? Faites-le nous savoir !</p>
+    <%= simple_form_for [ @exhibition, @review ] do |f| %>
+      <%= f.input :rating, collection: (1..5).to_a, label: false %>
+      <%= f.input :comment, label: false %>
+      <%= f.submit "Valider", class: "btn-museum-around btn-avis" %>
+    <% end %>
+  </div>
+  <div>
     <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
     <ul class="list-group">
       <% @exhibition.reviews.each do |review| %>
-        <li class="list-group-item">
+        <li class="list-group-item posted-reviews-show">
         <% review.rating.to_i.times do  %>
           <i class="fas fa-star"></i>
         <% end %>
@@ -71,14 +78,6 @@
         </li>
       <% end %>
     </ul>
-  </div>
-  <div class="px-4 white-background-show">
-    <p>Vous avez aimé ? Faites le nous savoir !</p>
-    <%= simple_form_for [ @exhibition, @review ] do |f| %>
-      <%= f.input :rating, collection: (1..5).to_a, label: false %>
-      <%= f.input :comment, label: false %>
-      <%= f.submit "Valider", class: "btn-museum-around btn-avis" %>
-    <% end %>
   </div>
 
 </div>

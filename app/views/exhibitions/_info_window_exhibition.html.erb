@@ -11,14 +11,14 @@
       <div>
         <p><i class="fas fa-map-marker-alt pr-1"></i><%= exhibition.place %>
           <br>
-          Date de fin : <%= exhibition.ending_date %>
+          Date de fin : <%= exhibition.ending_date.strftime('%d/%m/%Y') %>
         </p>
       </div>
       <div class="info-window-link">
-        <i class="far fa-heart favorite-icon"></i>
-  <!--       <%#= link_to exhibition_path(exhibition) do %>
-          <i class="fas fa-arrow-right"></i>
-        <#% end %> -->
+        <div id="favorite-icon" class="favorite-icon-index">
+          <%= render "favorite_icon", exhibition: exhibition %>
+        </div>
+        <!-- <i class="far fa-heart favorite-icon"></i> -->
       </div>
     </div>
   </div>

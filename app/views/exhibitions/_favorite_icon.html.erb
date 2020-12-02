@@ -1,0 +1,9 @@
+<% if @favorites.find_by(exhibition: exhibition) %>
+  <%= link_to favorite_path(exhibition_id: exhibition.id), remote: true do %>
+  <i class="fas fa-heart"></i>
+  <% end %>
+<% else %>
+  <%= link_to favorite_path(exhibition_id: exhibition.id), remote: true do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% end %>
