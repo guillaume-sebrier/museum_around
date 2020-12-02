@@ -34,7 +34,11 @@ def create_expos_from_html(html_doc)
     address = placeaddress.gsub(place,"").gsub(" - ","")
     description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
     site = Site.where("name ILIKE ?", place).first
-    site = Site.new(name: "fake site", latitude: 48.85, longitude: 2.33) if site.nil?
+    if site.nil?
+      site = Site.create(name: place, address: address, picture: photo, description: description)
+      site.geocode
+      site.save
+    end
     puts "Creating #{title}"
     exhibition = Exhibition.create(title: title, description: description, site: site, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: Exhibition::CATEGORIES.sample, price: (7..14).to_a.sample*100)
     #creating fake review to populate database
