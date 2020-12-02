@@ -67,7 +67,7 @@
               <p id="museum-description"><%= booking.exhibition.site.name %></p>
             </div>
             <div class="btn btn-infos-fav">
-              <%= link_to "détails", exhibition_path(exhibition) %>
+              <%= link_to "Détails", exhibition_path(:id) %>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
                 <p id="museum-description"><%= exhibition.site.name %></p>
               </div>
               <div class="btn btn-infos-fav">
-                <%= link_to "infos", exhibition_path(:id) %>
+                <%= link_to "Infos", exhibition_path(:id) %>
               </div>
             </div>
           </div>
