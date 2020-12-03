@@ -12,22 +12,34 @@
     <p class= "<%= @exhibition.category %> booking-category-tag" ><%= @exhibition.category%></p>
     <p class="paris-tag-bookings"> Paris </p>
   </div>
+
   <h3><%= @exhibition.title %></h3>
-  <h6><em>@<%= @exhibition.site.name %></em></h6>
-  <h6><em><%= @exhibition.site.address %></em></h6>
+
+  <div class="museum-description-box-booking">
+    <% if @exhibition.site.picture %>
+        <%= image_tag @exhibition.site.picture, class:"museum-picture-description" %>
+      <% else %>
+        <%= image_tag "placeholder-museum.jpg", alt: "alttext", class:"museum-picture-description" %>
+      <% end %>
+    <div>
+      <p> <%= @exhibition.place %> </p>
+      <p id="adress-grey-museum"> <%= @exhibition.address %> </p>
+    </div>
+  </div>
+
     <div class="row">
         <div class="formulaire-style">
             <div class="col">
             <div class="form-card">
               <%= simple_form_for [@exhibition, @booking] do |f| %>
-                <%= f.input :date, label: 'A quelle date souhaitez-vous réserver ?', as: :string, input_html: {type: :date} %>
-                <%= f.input :time, label: 'A quelle heure ?', as: :time, minute_step: 15 %>
+                <%= f.input :date, label: 'A quelle date souhaitez-vous réserver ?', as: :string, label_html: {class: "label-booking"}, input_html: {type: :date, class: "date-input-booking"}, wrapper_html: { class: "wrapper-booking" } %>
+                <%= f.input :time, label: 'A quelle heure ?', as: :time, minute_step: 15, input_html: {class: "date-input-booking"}, label_html: {class: "label-booking"} %>
                 <% if  !@exhibition.site.opening_time.nil? %>
                   <p><em>Heures d'ouverture : <%=@exhibition.site.opening_time %></em></p>
                 <% end %>
-                <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Nombre de billets' %>
+                <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Nombre de billets', label_html: {class: "label-booking"} %>
                 <div class="submit-button">
-                  <%= f.submit "Je réserve !", class: "font-weight-bold btn btn-info btn-lg" %>
+                  <%= f.submit "Je réserve", class: "btn-book-museum-around" %>
                 </div>
               <% end %>
             </div>
