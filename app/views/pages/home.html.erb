@@ -17,13 +17,13 @@
       <%= f.input :address, placeholder:'Où allons-nous ?', required: false, label: false, input_html: { id:"visit_address" }, class:"search-bar-address-input" %>
       </div>
     <%end%>
+    <div class="geolocate-button-banner">
+      <%= link_to exhibitions_path, class:"geolink" do %>
+        <i class="fas fa-location-arrow pr-1"></i> À proximité
+      <% end %>
+    </div>
   </div>
 
-  <div class="geolocate-button-banner">
-    <%= link_to exhibitions_path, class:"geolink" do %>
-      <i class="fas fa-location-arrow pr-1"></i> À proximité
-    <% end %>
-  </div>
 
   <div class="banner-b">
     <a class="banner-bottom" href="#section2">
