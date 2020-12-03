@@ -134,4 +134,22 @@
   color: white;
 }
 
+.form-control.is-valid {
+  border-color: #fdc71c;
+  border-radius: 25px;
+  background: none;
+  padding: 2px;
+  width: 120px;
+  padding: 2px;
+  text-align: center;
+}
 
+.booking_number_of_tickets {
+  margin-bottom: 0;
+}
+
+.quantity {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
