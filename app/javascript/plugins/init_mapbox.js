@@ -51,8 +51,10 @@ const initMapbox = () => {
     // map.fitBounds(bounds, { padding: 30, zoom: 11, duration: 0 });
     map.on("load", function (e) {
       const mapContainerEl = document.getElementById("map");
+      const loader = document.getElementById("loader");
       mapContainerEl.style.visibility = "visible";
-      // geolocate.trigger();
+      loader.style.visibility = "hidden";
+      geolocate.trigger();
     });
   }
 };
