@@ -81,6 +81,8 @@
   background-color: #FDC71C;
   border-top-right-radius: 10px;
   font-weight: bold;
+  margin-left: -2px;
+  margin-right: -2px;
 }
 
 .tab:hover {
@@ -135,16 +137,39 @@
 }
 
 .ticket-confirm {
-  display: list-item;
   align-items: center;
   text-align: center;
-  margin-top: -89px;
+  margin-top: -86px;
+  width: 75%;
+  margin-left: 41px;
+  font-size: 17px;
 }
 
 .expo-reservation h2 {
   font-size: 22px;
 }
 
+.logo-museum-dashboard img {
+  width: 100%;
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
 .nom-expo-dash {
   font-size: 25px;
+}
+
+.qrcode-dash img {
+  width: 100%;
+  margin-top: -1px;
+  margin-left: 0;
+}
+.cross-modal-dash {
+  z-index: 1111;
+  margin-right: 9px;
+  margin-top: 3px;
+}
+
+.btn:focus {
+  box-shadow: none!important;
 }
