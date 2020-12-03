@@ -3,14 +3,12 @@ class PagesController < ApplicationController
 
   def home
     @index = true
-    if @index == $yellow
-    end
   end
 
   def dashboard
-    @last_chance_exhibitions = Exhibition.includes([:site]).order(:ending_date).first(10)
+    @last_chance_exhibitions = Exhibition.includes([:site]).where("ending_date > ?", Date.today).order(:ending_date).first(10)
     @suggested_exhibitions = Exhibition.last(10)
-    @bookings = Booking.where(user: current_user)
+    @bookings = Booking.includes([:exhibition]).where(user: current_user)
     @bookings_futur = @bookings.where("date > ?", Date.today).sort_by{ |booking| booking.date }
     @bookings_passed = @bookings.where("date < ?", Date.today)
   end

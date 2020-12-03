@@ -10,7 +10,7 @@ class ExhibitionsController < ApplicationController
 
     if params[:search].present?
 
-      if params[:search][:museum].include?("1")
+      if params[:search][:museum].present? && params[:search][:museum].include?("1")
         @sites = Site.where(fake: false)
         @museum = true
       end
@@ -54,7 +54,7 @@ class ExhibitionsController < ApplicationController
   end
 
   def update
-    @site = Site.find(params[:exhibition][:site].to_i)
+    @site = Site.find(params[:exhibition][:site_id].to_i)
     @exhibition.update(exhibition_params)
     @exhibition.update(site: @site)
     redirect_to exhibition_path(@exhibition)
@@ -67,7 +67,7 @@ class ExhibitionsController < ApplicationController
   end
 
   def exhibition_params
-    params.require(:exhibition).permit(:title, :starting_date, :ending_date, :description, :price, :category, :photo, :place, :date, site_attributes: [:id])
+    params.require(:exhibition).permit(:title, :starting_date, :ending_date, :address, :fake, :description, :price, :category, :photo, :place, :date, site_attributes: [:id])
   end
 
   def define_markers
