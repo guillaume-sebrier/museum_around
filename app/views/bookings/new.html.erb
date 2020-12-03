@@ -35,7 +35,7 @@
                 <%= f.input :date, label: 'A quelle date souhaitez-vous réserver ?', as: :string, label_html: {class: "label-booking"}, input_html: {type: :date, class: "date-input-booking"}, wrapper_html: { class: "wrapper-booking" } %>
                 <%= f.input :time, label: 'A quelle heure ?', as: :time, minute_step: 15, input_html: {class: "date-input-booking"}, label_html: {class: "label-booking"} %>
                 <% if  !@exhibition.site.opening_time.nil? %>
-                  <p><em>Heures d'ouverture : <%=@exhibition.site.opening_time %></em></p>
+                  <p><em>Heures d'ouverture : <%= sanitize @exhibition.site.opening_time %></em></p>
                 <% end %>
                 <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Nombre de billets', label_html: {class: "label-booking"} %>
                 <div class="submit-button">

@@ -11,7 +11,7 @@ class ExhibitionsController < ApplicationController
     if params[:search].present?
 
       if params[:search][:museum].include?("1")
-        @sites = Site.all
+        @sites = Site.where(fake: false)
         @museum = true
       end
 
@@ -30,7 +30,7 @@ class ExhibitionsController < ApplicationController
     else
       @exhibitions = Exhibition.all
       @categories = Exhibition::CATEGORIES
-      @sites = Site.all
+      @sites = Site.where(fake: false)
       @museum = true
     end
 

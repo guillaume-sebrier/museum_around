@@ -1,2 +1,59 @@
-<h1>Sites#show</h1>
-<p>Find me in app/views/sites/show.html.erb</p>
+<div class="description-show-exhibition">
+  <% if @site.picture %>
+    <%= image_tag @site.picture, alt: @site.description, class:"img-site-description" %>
+  <% else %>
+    <%= image_tag "placeholder-museum-min.png", alt: @site.description, class:"img-site-description" %>
+  <% end %>
+
+  <%= link_to :back do %>
+    <p class= "arrow-back-link"><i class="fas fa-arrow-circle-left"></i></p>
+  <% end %>
+</div>
+
+<div class="container show-description-container">
+  <h4>  <%= @site.name %> </h4>
+</div>
+
+<div class="container">
+  <div class="museum-description-box">
+    <% if @site.picture %>
+        <%= image_tag @site.picture, class:"museum-picture-description" %>
+      <% else %>
+        <%= image_tag "placeholder-museum.jpg", alt: "alttext", class:"museum-picture-description" %>
+      <% end %>
+    <div>
+      <p> <%= @site.name %> </p>
+      <p id="adress-grey-museum"> <%= @site.address %> </p>
+    </div>
+  </div>
+
+  <div class="description-exhibition-show">
+    <br>
+    <%= @site.description %>
+    <br>
+    <%= sanitize @site.opening_time %>
+    <br>
+    <% if @site.website.present? %>
+      <%= link_to 'Site Internet', @site.website  %>
+      <br>
+    <% end %>
+    <% if @site.wiki_link.present? %>
+      <%= link_to @site.wiki_link do %>
+        <i class="fab fa-wikipedia-w"></i>
+      <% end %>
+      <br>
+    <%= @site.phone %>
+    <br>
+    <% end %>
+  </div>
+
+  <div class="exhibition-price-show">
+    <i class="fas fa-ticket-alt"></i>
+    <div>
+      <p> <%= @site.price/100 if @site.price  %> € </p>
+    </div>
+  </div>
+  <%= link_to "Réserver", class:"btn-res-museum-around buttons-show-exhibition mb-5 py-5" %>
+  <br>-
+</div>
+
