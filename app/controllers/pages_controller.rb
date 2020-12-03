@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @last_chance_exhibitions = Exhibition.order(:ending_date).first(10)
+    @last_chance_exhibitions = Exhibition.includes([:site]).order(:ending_date).first(10)
     @suggested_exhibitions = Exhibition.last(10)
     @bookings = Booking.where(user: current_user)
     @bookings_futur = @bookings.where("date > ?", Date.today)
