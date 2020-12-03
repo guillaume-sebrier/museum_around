@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     @last_chance_exhibitions = Exhibition.includes([:site]).order(:ending_date).first(10)
     @suggested_exhibitions = Exhibition.last(10)
     @bookings = Booking.where(user: current_user)
-    @bookings_futur = @bookings.where("date > ?", Date.today)
+    @bookings_futur = @bookings.where("date > ?", Date.today).sort_by{ |booking| booking.date }
     @bookings_passed = @bookings.where("date < ?", Date.today)
   end
 
