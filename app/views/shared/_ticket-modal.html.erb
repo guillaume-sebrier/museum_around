@@ -6,15 +6,17 @@
 
        <!--  <div class="modal-header py-2">
           <h6 class="modal-title" id="exampleModalLongTitle">Filtrer</h6> -->
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <div class="cross-modal-dash">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
       <!--   </div> -->
         <div class="modal-body ticket-confirm">
           <div class="banner-top expo-reservation">
-            <%= image_tag("logo-museum-around-darker.png", class: "logo-img") %>
-            <h2>Votre réservation pour l'exposition:</h2>
-            <hr>
+            <div class="logo-museum-dashboard">
+             <%= image_tag("logo-museum-around-darker.png", class: "logo-img") %>
+            </div>
           </div>
           <div class="nom-expo-dash">
             <strong> <%= @booking.exhibition.title%> </strong>
@@ -24,12 +26,23 @@
           Le <strong> <%= @booking.date.strftime('%d/%m/%Y')%> </strong>à <strong> <%= @booking.time.strftime('%H:%M') %> </strong>
           <hr>
           </div>
+          <div class="nb-visit-expo">
+          Pour <strong> <%= @booking.number_of_tickets%> </strong>
+            <% if @booking.number_of_tickets > 1 %>
+              visiteurs
+              <% else %>
+              visiteur
+            <% end %>
+            <hr>
+          </div>
           <div class="address-exhibit-dash">
           <strong> <%= @booking.exhibition.place %> </strong>
             <br>
           </div>
           <strong> <%= @booking.exhibition.address%> </strong>
-          <%= image_tag("QRcode-utile.png", class: "logo-img") %>
+          <div class="qrcode-dash">
+            <%= image_tag("QRcode-utile.png", class: "logo-img") %>
+          </div>
         </div>
       </div>
     </div>

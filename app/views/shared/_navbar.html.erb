@@ -12,7 +12,7 @@
 
   <% if user_signed_in? %>
     <%= link_to user_favorites_path(current_user) do %>
-      <i class="far fa-heart <%= current_page?(user_favorites_path(current_user)) ? "" : "icon-not-active" %>"></i>
+      <i class="fas fa-heart <%= current_page?(user_favorites_path(current_user)) ? "" : "icon-not-active" %>"></i>
     <% end %>
   <% end %>
   <% if user_signed_in? && current_user.photo.attached? %>
@@ -31,3 +31,4 @@
 </div>
 
 <!-- gravity:'face', crop:'crop' -->
+
