@@ -16,13 +16,13 @@
     <% end %>
   <% end %>
   <% if user_signed_in? && current_user.photo.attached? %>
-    <%= link_to dashboard_path(current_user) do %>
+    <%= link_to dashboard_path do %>
       <div class= "profile-pic <%= current_page?(dashboard_path(current_user)) ? "" : "icon-not-active"  %>">
         <%= cl_image_tag current_user.photo.key, crop:'crop' %>
       </div>
     <% end %>
   <% else %>
-    <%= link_to dashboard_path(current_user) do %>
+    <%= link_to dashboard_path do %>
       <div class="icon-user <%= current_page?(dashboard_path(current_user)) ? "" : "icon-not-active" %>">
         <i class="far fa-user-circle"></i>
       </div>
