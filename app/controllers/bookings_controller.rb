@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new
+    @booking = Booking.new(number_of_tickets: 1)
     @exhibition = Exhibition.find(params[:exhibition_id])
   end
 

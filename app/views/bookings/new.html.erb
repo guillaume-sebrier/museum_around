@@ -32,22 +32,24 @@
             <div class="col">
             <div class="form-card">
               <%= simple_form_for [@exhibition, @booking] do |f| %>
-                <%= f.input :date, label: 'A quelle date souhaitez-vous réserver ?', as: :string, label_html: {class: "label-booking"}, input_html: {type: :date, class: "date-input-booking"}, wrapper_html: { class: "wrapper-booking" } %>
-                <%= f.input :time, label: 'A quelle heure ?', as: :time, minute_step: 15, input_html: {class: "date-input-booking"}, label_html: {class: "label-booking"} %>
+                <%= f.input :date, label: 'À quelle date souhaitez-vous réserver ?', as: :string, label_html: {class: "label-booking"}, input_html: {type: :date, class: "date-input-booking"}, wrapper_html: { class: "wrapper-booking" } %>
+                <%= f.input :time, label: 'À quelle heure ?', as: :time, minute_step: 15, input_html: {class: "date-input-booking"}, label_html: {class: "label-booking"} %>
                 <% if  !@exhibition.site.opening_time.nil? %>
                   <p><em>Heures d'ouverture : <%= sanitize @exhibition.site.opening_time %></em></p>
                 <% end %>
-                <%= f.input :number_of_tickets, collection: (1..20).to_a, label: 'Nombre de billets', label_html: {class: "label-booking"} %>
-                <div class="submit-button">
-                  <%= f.submit "Je réserve", class: "btn-book-museum-around" %>
-                </div>
+              <div class="quantity" style="display: flex">
+               <!--  <span class="btn">-</span> -->
+                <%= f.input :number_of_tickets, min:'1', label: 'Nombre de billets', label_html: {class: "label-booking"} %>
+              <!--   <span class="btn quantity-plu" data-price="plus">+</span> -->
+              </div>
+              <div class="submit-button">
+                <%= f.submit "Je réserve", class: "btn-book-museum-around" %>
+              </div>
               <% end %>
             </div>
           </div>
         </div>
       </div>
-
-
 </div>
 
 
