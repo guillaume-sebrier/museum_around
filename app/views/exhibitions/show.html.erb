@@ -34,6 +34,11 @@
       <p id="adress-grey-museum"> <%= @exhibition.address %> </p>
     </div>
   </div>
+  <div>
+    <% if current_user.admin  %>
+      <%= link_to 'EDIT', edit_exhibition_path(@exhibition)  %>
+    <% end %>
+  </div>
 
   <div class="description-exhibition-show">
     <p><strong>Description :</strong>
