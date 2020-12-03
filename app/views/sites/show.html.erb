@@ -28,19 +28,23 @@
   </div>
 
   <div class="description-exhibition-show">
-    <p><strong>Description :</strong>
     <br>
     <%= @site.description %>
     <br>
     <%= sanitize @site.opening_time %>
     <br>
-    <%= link_to "Site web", <%= @site.website %> %>
-    <br>
+    <% if @site.website.present? %>
+      <%= link_to 'Site Internet', @site.website  %>
+      <br>
+    <% end %>
+    <% if @site.wiki_link.present? %>
+      <%= link_to @site.wiki_link do %>
+        <i class="fab fa-wikipedia-w"></i>
+      <% end %>
+      <br>
     <%= @site.phone %>
     <br>
-    <%= @site.wiki_link %>
-  </p>
-
+    <% end %>
   </div>
 
   <div class="exhibition-price-show">
