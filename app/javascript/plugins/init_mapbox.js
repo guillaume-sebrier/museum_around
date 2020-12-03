@@ -3,7 +3,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
+    const popup = new mapboxgl.Popup({ closeButton: false }).setHTML(marker.infoWindow);
 
     const element = document.createElement('div');
     element.className = 'marker';

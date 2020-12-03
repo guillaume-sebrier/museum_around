@@ -53,10 +53,10 @@
 
 <div class="container review-card-show">
   <div>
-    <h5 class="review-title p-1 text-center">Avis</h5>
+    <h5 class="review-title text-center pt-3">Vous avez aimé ? <br> Faites-le nous savoir !</h5>
   </div>
   <div class="px-4 white-background-show">
-    <p>Vous avez aimé ? Faites-le nous savoir !</p>
+    <!-- <p>Vous avez aimé ? Faites-le nous savoir !</p> -->
     <%= simple_form_for [ @exhibition, @review ] do |f| %>
       <%= f.input :rating, collection: (1..5).to_a, label: false %>
       <%= f.input :comment, label: false %>

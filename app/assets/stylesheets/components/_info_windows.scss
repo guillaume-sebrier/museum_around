@@ -1,11 +1,13 @@
 .mapboxgl-popup {
-  max-width: 200px;
   z-index: 2;
   text-decoration: none;
 }
 
+.mapboxgl-popup.mapboxgl-popup-anchor-top {
+    max-width: 270px!important;
+  }
+
 .mapboxgl-popup-content {
-  // text-align: center;
   font-family: 'Source Sans Pro';
   border-radius: 4px;
   text-decoration: none;
@@ -30,19 +32,19 @@
 
   .info-window-title {
     text-align: center;
-    margin-top: 4px;
-    font-size: 15px;
+    margin-top: 10px;
+    font-size: 17px;
     font-weight: bold;
     text-decoration: none;
   }
 
   .info-window-img-top {
-    height: 150px;
+    height: 160px;
     width: 100%;
     object-fit: cover;
     position: relative;
     p {
-      // background-color: $yellow;
+      color: #FAFAFA;
       position: absolute;
       font-weight: bold;
       bottom: -8px;
@@ -60,6 +62,7 @@
 
     p {
       margin-bottom: 0;
+      font-size: 15px;
     }
   }
 
@@ -73,7 +76,7 @@
   .favorite-icon-index {
     margin-right: 6px;
     font-size: 30px;
-    // opacity: 0.9;
+    color: #c24914;
 
     a {
       color: #c24914;

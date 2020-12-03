@@ -18,13 +18,13 @@
   position: relative;
 
   .show-category-tag {
-    // background-color: #FDC71C;
     position: absolute;
     font-weight: bold;
     bottom: -8px;
     right: 7px;
     padding: 1px 4px;
     border-radius: 4px;
+    color: #FAFAFA
   }
 
   .arrow-back-link {
@@ -150,9 +150,9 @@
 }
 
 .white-background-show {
-  height: 235px;
+  height: 200px;
 }
 
 .posted-reviews-show {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
