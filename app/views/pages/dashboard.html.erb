@@ -87,9 +87,10 @@
               <div class="notification">
                 <img src= "<%= exhibition.photo %>" class="avatar-large" />
                 <div class="notification-content">
-                  <p><small>Jusqu'au <%= exhibition.ending_date %></small></p>
+                  <p><small>Jusqu'au <%= exhibition.ending_date.strftime('%d/%m/%Y') %></small></p>
                   <p><strong> <%= exhibition.title %></strong></p>
                   <p id="museum-description"><%= exhibition.site.name %></p>
+                  <p id="museum-description"><%= exhibition.site.address %></p>
                 </div>
               </div>
             </div>
