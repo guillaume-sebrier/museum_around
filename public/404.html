@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>Page d'erreur (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+  .logo-errors {
+    width: 100%;
+  }
+
   .rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
@@ -23,7 +27,7 @@
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
+    border-top: #E67E22 solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -33,7 +37,7 @@
 
   .rails-default-error-page h1 {
     font-size: 100%;
-    color: #730E15;
+    color: #E67E22;
     line-height: 1.5em;
   }
 
@@ -51,6 +55,13 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .lien-erreur a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+  }
+
   </style>
 </head>
 
@@ -58,10 +69,11 @@
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      <img class="logo-errors" src="/images/logo-museum-around-centered.png" alt="museum-around-logo">
+      <h1>Il semblerait que la page que vous cherchez n'existe plus !</h1>
+      <p class="lien-erreur" >Pas de panique, <a href="https://www.museum-around.me/">cliquez ici</a> pour retrouver la page d'accueil.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <!-- <p>If you are the application owner check the logs for more information.</p> -->
   </div>
 </body>
 </html>
