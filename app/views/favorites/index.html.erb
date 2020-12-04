@@ -14,7 +14,14 @@
         <img src="<%= favorite.exhibition.photo %>" />
         <div class="card-product-infos-fav">
           <h2><%= favorite.exhibition.title %></h2>
-          <p> <%= favorite.exhibition.description %> </p>
+          <p> <%= favorite.exhibition.description %> <br>
+          <em>
+          <% if favorite.exhibition.starting_date && favorite.exhibition.ending_date %>
+            Du <%= favorite.exhibition.starting_date.strftime('%d/%m/%Y') %> au <%= favorite.exhibition.ending_date.strftime('%d/%m/%Y') %>
+          <% elsif favorite.exhibition.date %>
+            <%= favorite.exhibition.date %>
+          <% end %>
+          </em></p>
         </div>
         <div class="details-fav-box">
           <div class="btn btn-infos-fav">
