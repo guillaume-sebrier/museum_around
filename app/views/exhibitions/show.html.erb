@@ -86,10 +86,13 @@
         <% (5-review.rating.to_i).times do  %>
           <i class="far fa-star"></i>
         <% end %>
-         <strong><%= review.user.first_name %> <%= review.user.last_name %>.</strong> - <%= review.comment %>
+        <strong><%= review.user.first_name %>
+        <% if review.user.last_name %>
+          <%= review.user.last_name[0] %>
+        <% end %>
+        .</strong> - <%= review.comment %>
         </li>
       <% end %>
     </ul>
   </div>
 </div>
-
