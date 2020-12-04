@@ -13,9 +13,6 @@
   </dir>
 </div>
 
-
-
-
 <!-- width => 90, :height => 90, :crop => :thumb, :gravity => :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false -->
 
 <div class="container">
@@ -64,8 +61,8 @@
             <div class="notification">
               <img src= "<%= booking.exhibition.photo %>" class="avatar-large" />
               <div class="notification-content">
-                <p><small>Réservations</small></p>
                 <p><strong> <%= booking.exhibition.title %></strong></p>
+                <p><strong> <%= @booking.date.strftime('%d/%m/%Y')%> </strong>à <strong> <%= @booking.time.strftime('%H:%M') %> </strong></p>
                 <p id="museum-description"><%= booking.exhibition.site.name %></p>
               </div>
             </div>
