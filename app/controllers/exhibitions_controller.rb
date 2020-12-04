@@ -27,14 +27,15 @@ class ExhibitionsController < ApplicationController
     elsif params[:category].present?
       @exhibitions = Exhibition.where(category: params[:category])
       @categories = params[:category]
+      @joconde = true
     else
       @exhibitions = Exhibition.all
       @categories = Exhibition::CATEGORIES
       @sites = Site.where(fake: false)
       @museum = true
+      @joconde = true
     end
 
-    # raise
     set_favorites
     define_markers
   end
