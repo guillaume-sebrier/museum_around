@@ -1,5 +1,6 @@
 class ExhibitionsController < ApplicationController
   before_action :set_exhibition, only: %i[show destroy update edit]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @exhibitions = nil
