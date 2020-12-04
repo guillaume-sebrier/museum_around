@@ -43,7 +43,14 @@
   <div class="description-exhibition-show">
     <p><strong>Description :</strong>
     <br>
-    <%= @exhibition.description %></p>
+    <%= @exhibition.description %><br>
+    <em>
+    <% if @exhibition.starting_date && @exhibition.ending_date %>
+      Du <%= @exhibition.starting_date.strftime('%d/%m/%Y') %> au <%= @exhibition.ending_date.strftime('%d/%m/%Y') %>
+    <% elsif @exhibition.date %>
+      <%= @exhibition.date %>
+    <% end %>
+    </em></p>
   </div>
 
   <div class="exhibition-price-show">
