@@ -14,14 +14,26 @@
   margin-bottom: 10px;
 }
 
-
-
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-gap: 14px;
   margin-top: 20px;
+  margin-bottom: 50px;
 }
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
 
 .category-cards-box {
   margin-left: 10px;
@@ -33,6 +45,3 @@
   color: white;
 }
 
-#cards-bottom {
-  margin-bottom: 50px;
-}

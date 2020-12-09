@@ -91,15 +91,30 @@
 }
 
 .wrapper-rubik {
+  background-position: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  // background-color: #fff;
-  background-image: url("https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/2.33,48.85,11/400x600?access_token=pk.eyJ1IjoibGdpcm91IiwiYSI6ImNraDRvNDI0czAwa2Qycm9oNXV0M2VhcjQifQ.WJzi1kWVii6EgOWm5otQJg");
-  // background-repeat: no-repeat;
 }
+
+@media (min-width: 100px) and (max-width: 575px) {
+  .wrapper-rubik {
+    background-image: url("https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/2.33,48.85,11/400x600?access_token=pk.eyJ1IjoibGdpcm91IiwiYSI6ImNraDRvNDI0czAwa2Qycm9oNXV0M2VhcjQifQ.WJzi1kWVii6EgOWm5otQJg");
+    // background-repeat: no-repeat;
+  }
+}
+
+@media (min-width: 576px) {
+  .wrapper-rubik {
+    background-image: url("https://api.mapbox.com/styles/v1/mapbox/streets-v10/static/2.33,48.85,11/1280x800?access_token=pk.eyJ1IjoibGdpcm91IiwiYSI6ImNraDRvNDI0czAwa2Qycm9oNXV0M2VhcjQifQ.WJzi1kWVii6EgOWm5otQJg");
+    background-repeat: no-repeat;
+  }
+}
+
+
+
 
 .rubik-loader {
   width: 200px;
