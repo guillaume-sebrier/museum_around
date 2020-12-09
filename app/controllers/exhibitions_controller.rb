@@ -1,6 +1,6 @@
 class ExhibitionsController < ApplicationController
   before_action :set_exhibition, only: %i[show destroy update edit]
-  # skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @exhibitions = nil
@@ -103,6 +103,8 @@ class ExhibitionsController < ApplicationController
   end
 
   def set_favorite
+    return unless user_signed_in?
+
     if Favorite.find_by(user: current_user, exhibition: @exhibition)
       @favorite = Favorite.find_by(user: current_user, exhibition: @exhibition)
     else
@@ -111,6 +113,6 @@ class ExhibitionsController < ApplicationController
   end
 
   def set_favorites
-    @favorites = current_user.favorites
+    @favorites = current_user.favorites if user_signed_in?
   end
 end
