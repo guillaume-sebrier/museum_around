@@ -15,9 +15,11 @@
         </p>
       </div>
       <div class="info-window-link">
-        <div id="favorite-icon" class="favorite-icon-index">
-          <%= render "favorite_icon", exhibition: exhibition %>
-        </div>
+        <% if user_signed_in? %>
+          <div id="favorite-icon" class="favorite-icon-index">
+            <%= render "favorite_icon", exhibition: exhibition %>
+          </div>
+        <% end %>
         <!-- <i class="far fa-heart favorite-icon"></i> -->
       </div>
     </div>

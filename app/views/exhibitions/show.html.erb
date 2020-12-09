@@ -8,17 +8,19 @@
 
 <div class="container show-description-container">
   <h4>  <%= @exhibition.title %> </h4>
-  <div class="favorite-icon-show">
-    <% if @favorite.user == current_user %>
-      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
-      <i class="fas fa-heart"></i>
+  <% if user_signed_in? %>
+    <div class="favorite-icon-show">
+      <% if @favorite.user == current_user %>
+        <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+        <i class="fas fa-heart"></i>
+        <% end %>
+      <% else %>
+        <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
+          <i class="far fa-heart"></i>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= link_to favorite_path(exhibition_id: @exhibition.id) do %>
-        <i class="far fa-heart"></i>
-      <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 
@@ -35,7 +37,7 @@
     </div>
   </div>
   <div>
-    <% if current_user.admin  %>
+    <% if user_signed_in? && current_user.admin  %>
       <%= link_to 'EDIT', edit_exhibition_path(@exhibition)  %>
     <% end %>
   </div>
