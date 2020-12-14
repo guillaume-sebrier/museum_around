@@ -11,10 +11,12 @@
   <div class="block-recommandations">
     <% @my_favorites.each do |favorite| %>
       <div class="card-product-fav">
+        <div class="inner-card-box">
         <img src="<%= favorite.exhibition.photo %>" />
-        <div class="card-product-infos-fav">
-          <h2><%= favorite.exhibition.title %></h2>
-          <p> <%= favorite.exhibition.description %></p>
+          <div class="card-product-infos-fav">
+            <h2><%= favorite.exhibition.title %></h2>
+            <p> <%= favorite.exhibition.description %></p>
+          </div>
         </div>
         <div class="details-fav-box">
           <div class="btn btn-infos-fav">
