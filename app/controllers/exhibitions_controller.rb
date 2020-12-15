@@ -17,20 +17,20 @@ class ExhibitionsController < ApplicationController
       end
 
       @categories = Exhibition::CATEGORIES.select { |category| params[:search][category] == '1' }
-      @exhibitions = Exhibition.where(category: @categories)
+      @exhibitions = Exhibition.where(category: @categories).where("ending_date > ?", Date.today)
       if params[:search][:address].present?
         @sites = Site.near(params[:search][:address], 6)
         @museum = true
-        @exhibitions = Exhibition.where(site_id: @sites.map(&:id))
+        @exhibitions = Exhibition.where(site_id: @sites.map(&:id)).where("ending_date > ?", Date.today)
         @categories = Exhibition::CATEGORIES
       end
 
     elsif params[:category].present?
-      @exhibitions = Exhibition.where(category: params[:category])
+      @exhibitions = Exhibition.where(category: params[:category]).where("ending_date > ?", Date.today)
       @categories = params[:category]
       @joconde = true
     else
-      @exhibitions = Exhibition.all
+      @exhibitions = Exhibition.all.where("ending_date > ?", Date.today)
       @categories = Exhibition::CATEGORIES
       @sites = Site.where(fake: false)
       @museum = true

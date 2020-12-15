@@ -23,7 +23,14 @@ def create_expos_from_html(html_doc)
 
   html_doc.search('.Article-line').each do |element|
     photo = element.search('img').attribute('src').value
-    title = element.search('h3').text.strip.gsub("\n","").gsub(/ +/," ").gsub("(reporté)", "").gsub("(événement suspendu)", "").gsub("(reportée)", "")
+    title = element.search('h3').text.strip.gsub("\n","").gsub(/ +/," ").gsub("(reporté)", "").gsub("(événement suspendu)", "").gsub("(reportée)", "").gsub("(réouverture le 15 décembre)", "")
+
+    url = element.search('h3>a').attribute('href').value
+    html_page = scrap_to_html_2 ("https://www.parisinfo.com#{url}")
+    detailed_desc = html_page.search('.ezxmltext-field').text.strip
+    unless html_page.css('a:contains("Site Internet de l’événement")').attribute('href').nil?
+      link = html_page.css('a:contains("Site Internet de l’événement")').attribute('href').value
+    end
     date = element.search('.date').text.strip.gsub("\n","").gsub(/ +/," ")
     # Parsing starting and ending dates
     starting_date = date.match('(?<=du ).*(?= au)').to_s.gsub(re,month_map).to_date
@@ -40,25 +47,25 @@ def create_expos_from_html(html_doc)
       # site.save
     end
     puts "Creating #{title}"
-    exhibition = Exhibition.create(title: title, description: description, site: site, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: Exhibition::CATEGORIES.sample, price: (7..14).to_a.sample*100)
+    exhibition = Exhibition.create(title: title, description: description, site: site, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: "Peinture", detailed_desc: detailed_desc, link:link)
     #creating fake review to populate database
     Review.create(rating: (2..5).to_a.sample, comment: ["Très belle expo", "Nous avons beaucoup aimé cette expo", "A refaire!", "Belle scénographie", "Très sympa", "GENIAL!!", "Bien sans plus"].sample, user: User.all.sample, exhibition: exhibition)
     sleep(1)
   end
 end
 
-def scrap_expos2 (url)
+def scrap_to_html_2 (url)
   #if open-uri does not work
   browser = Ferrum::Browser.new(timeout: 20)
   browser.goto(url)
   html = browser.body
   html_doc = Nokogiri::HTML(html)
   browser.quit
-  create_expos_from_html(html_doc)
+  return html_doc
 end
 
-def scrap_expos (url)
+def scrap_to_html (url)
   html = open(url).read
   html_doc = Nokogiri::HTML(html)
-  create_expos_from_html(html_doc)
+  return html_doc
 end
