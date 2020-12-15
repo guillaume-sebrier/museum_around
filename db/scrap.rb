@@ -26,7 +26,7 @@ def create_expos_from_html(html_doc)
     title = element.search('h3').text.strip.gsub("\n","").gsub(/ +/," ").gsub("(reporté)", "").gsub("(événement suspendu)", "").gsub("(reportée)", "").gsub("(réouverture le 15 décembre)", "")
 
     url = element.search('h3>a').attribute('href').value
-    html_page = scrap_to_html_2 ("https://www.parisinfo.com#{url}")
+    html_page = scrap_to_html ("https://www.parisinfo.com#{url}")
     detailed_desc = html_page.search('.ezxmltext-field').text.strip
     unless html_page.css('a:contains("Site Internet de l’événement")').attribute('href').nil?
       link = html_page.css('a:contains("Site Internet de l’événement")').attribute('href').value

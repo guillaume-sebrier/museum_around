@@ -79,8 +79,8 @@ require_relative 'scrap'
 
 url1 = "https://www.parisinfo.com/ou-sortir-a-paris/infos/guides/calendrier-expositions-paris?perPage=50"
 url2 = "https://www.parisinfo.com/ou-sortir-a-paris/infos/guides/calendrier-expositions-paris?perPage=50&page=2"
-create_expos_from_html scrap_to_html_2 url1
-create_expos_from_html scrap_to_html_2 url2
+create_expos_from_html scrap_to_html url1
+create_expos_from_html scrap_to_html url2
 
 puts "Finished"
 
