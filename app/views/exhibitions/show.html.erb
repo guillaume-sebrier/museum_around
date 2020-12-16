@@ -45,7 +45,7 @@
   <div class="description-exhibition-show">
     <p><strong>Description :</strong>
     <br>
-    <%= @exhibition.description %><br>
+    <%= @exhibition.detailed_desc %><br>
     <em>
     <% if @exhibition.starting_date && @exhibition.ending_date %>
       Du <%= @exhibition.starting_date.strftime('%d/%m/%Y') %> au <%= @exhibition.ending_date.strftime('%d/%m/%Y') %>
@@ -54,14 +54,7 @@
     <% end %>
     </em></p>
   </div>
-
-  <div class="exhibition-price-show">
-    <i class="fas fa-ticket-alt"></i>
-    <div>
-      <p> <%= @exhibition.price/100 %> € </p>
-    </div>
-  </div>
-  <%= link_to "Réserver", new_exhibition_booking_path(@exhibition), class:"btn-res-museum-around buttons-show-exhibition" %>
+  <%= link_to "Site Internet de l'évènement", @exhibition.link, class:"btn-res-museum-around buttons-show-exhibition" %>
 </div>
 
 
