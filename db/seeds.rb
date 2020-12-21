@@ -10,10 +10,13 @@ require_relative 'scrap'
 
 # osm_url = "https://overpass-api.de/api/interpreter?data=%2F*%0AThis%20has%20been%20generated%20by%20the%20overpass-turbo%20wizard.%0AThe%20original%20search%20was%3A%0A%E2%80%9Ctourism%3Dmuseum%20in%20ile-de-france%20%E2%80%9D%0A*%2F%0A%5Bout%3Ajson%5D%5Btimeout%3A25%5D%3B%0A%2F%2F%20fetch%20area%20%E2%80%9Cile-de-france%E2%80%9D%20to%20search%20in%0Aarea%283600008649%29-%3E.searchArea%3B%0A%2F%2F%20gather%20results%0A%28%0A%20%20%2F%2F%20query%20part%20for%3A%20%E2%80%9Ctourism%3Dmuseum%E2%80%9D%0A%20%20node%5B%22tourism%22%3D%22museum%22%5D%28area.searchArea%29%3B%0A%20%20way%5B%22tourism%22%3D%22museum%22%5D%28area.searchArea%29%3B%0A%20%20relation%5B%22tourism%22%3D%22museum%22%5D%28area.searchArea%29%3B%0A%29%3B%0A%2F%2F%20print%20results%0Aout%20body%3B%0A%3E%3B%0Aout%20skel%20qt%3B"
 
-# puts "Destroy Sites, Exhibitions and bookings"
+# puts "Destroy Sites and bookings"
 # Booking.destroy_all
 # Site.destroy_all
-# Exhibition.destroy_all
+Exhibition.all.each do |exhibition|
+  exhibition.update(old:true)
+  exhibition.save!
+end
 
 # puts "Parse sites from JSON"
 
@@ -82,6 +85,7 @@ url2 = "https://www.parisinfo.com/ou-sortir-a-paris/infos/guides/calendrier-expo
 create_expos_from_html scrap_to_html url1
 create_expos_from_html scrap_to_html url2
 
+puts "Destroy old exhibitions"
+Exhibition.where(old: true).destroy_all
+
 puts "Finished"
-
-
