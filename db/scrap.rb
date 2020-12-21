@@ -26,15 +26,11 @@ def create_expos_from_html(html_doc)
     title = element.search('h3').text.strip.gsub("\n","").gsub(/ +/," ").gsub("(reporté)", "").gsub("(événement suspendu)", "").gsub("(reportée)", "").gsub("(réouverture le 15 décembre)", "")
     description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
     url = element.search('h3>a').attribute('href').value
-    if "https://www.parisinfo.com#{url}".ascii_only?
-      html_page = scrap_to_html ("https://www.parisinfo.com#{url}")
-      detailed_desc = html_page.search('.ezxmltext-field').text.strip
-      unless html_page.css('a:contains("Site Internet de l’événement")').attribute('href').nil?
-        link = html_page.css('a:contains("Site Internet de l’événement")').attribute('href').value
-      end
-    else
-      detailed_desc = description
-      link = "#"
+    url = "https://www.parisinfo.com#{url}"
+    html_page = scrap_to_html (url)
+    detailed_desc = html_page.search('.ezxmltext-field').text.strip
+    unless html_page.css('a:contains("Site Internet de l’événement")').attribute('href').nil?
+      link = html_page.css('a:contains("Site Internet de l’événement")').attribute('href').value
     end
     date = element.search('.date').text.strip.gsub("\n","").gsub(/ +/," ")
     # Parsing starting and ending dates
@@ -66,6 +62,7 @@ def create_expos_from_html(html_doc)
 end
 
 def scrap_to_html (url)
+  url = URI.escape(url) unless url.ascii_only?
   html = open(url).read
   html_doc = Nokogiri::HTML(html)
   return html_doc
