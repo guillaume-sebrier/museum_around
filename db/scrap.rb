@@ -41,31 +41,36 @@ def create_expos_from_html(html_doc)
     address = placeaddress.gsub(place,"").gsub(" - ","")
     description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
     site = Site.where("name ILIKE ?", place).first
+    old_exhib = Exhibition.where("title ILIKE ?", title).first
+    unless old_exhib.nil?
+      category = old_exhib.category
+      longitude = old_exhib.longitude
+      latitude = old_exhib.latitude
+    end
+
     if site.nil?
       site = Site.create(name: place, address: address, picture: photo, description: description, fake: true)
       # site.geocode
       # site.save
     end
     puts "Creating #{title}"
-    exhibition = Exhibition.create(title: title, description: description, site: site, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: "Peinture", detailed_desc: detailed_desc, link:link)
+    exhibition = Exhibition.create(title: title, description: description, site: site, place: place, address: address, photo: photo, date: date, starting_date: starting_date, ending_date: ending_date || (Time.now + 100000*(2..20).to_a.sample).to_date, category: category || 'Peinture', detailed_desc: detailed_desc, link:link, old: false, latitude: latitude, longitude: longitude)
     #creating fake review to populate database
     Review.create(rating: (2..5).to_a.sample, comment: ["Très belle expo", "Nous avons beaucoup aimé cette expo", "A refaire!", "Belle scénographie", "Très sympa", "GENIAL!!", "Bien sans plus"].sample, user: User.all.sample, exhibition: exhibition)
     sleep(1)
   end
 end
 
-def scrap_to_html_2 (url)
-  #if open-uri does not work
-  browser = Ferrum::Browser.new(timeout: 20)
-  browser.goto(url)
-  html = browser.body
-  html_doc = Nokogiri::HTML(html)
-  browser.quit
-  return html_doc
-end
-
 def scrap_to_html (url)
   html = open(url).read
   html_doc = Nokogiri::HTML(html)
   return html_doc
+
+  #uncomment if open-uri does not work
+  # browser = Ferrum::Browser.new(timeout: 20)
+  # browser.goto(url)
+  # html = browser.body
+  # html_doc = Nokogiri::HTML(html)
+  # browser.quit
+  # return html_doc
 end

@@ -69,7 +69,7 @@ class ExhibitionsController < ApplicationController
   end
 
   def exhibition_params
-    params.require(:exhibition).permit(:title, :starting_date, :ending_date, :address, :fake, :description, :price, :category, :photo, :place, :date, site_attributes: [:id])
+    params.require(:exhibition).permit(:title, :starting_date, :ending_date, :address, :fake, :description, :price, :category, :photo, :place, :old, :date, site_attributes: [:id])
   end
 
   def define_markers

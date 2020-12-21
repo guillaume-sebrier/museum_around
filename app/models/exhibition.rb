@@ -8,5 +8,5 @@ class Exhibition < ApplicationRecord
   validates :title, presence: true
   # validates :category, inclusion: { in: CATEGORIES }
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, if: ->(obj) { obj.address_changed? and obj.latitude.blank? }
 end
