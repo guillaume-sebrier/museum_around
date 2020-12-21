@@ -24,9 +24,10 @@ def create_expos_from_html(html_doc)
   html_doc.search('.Article-line').each do |element|
     photo = element.search('img').attribute('src').value
     title = element.search('h3').text.strip.gsub("\n","").gsub(/ +/," ").gsub("(reporté)", "").gsub("(événement suspendu)", "").gsub("(reportée)", "").gsub("(réouverture le 15 décembre)", "")
-
+    description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
     url = element.search('h3>a').attribute('href').value
-    html_page = scrap_to_html ("https://www.parisinfo.com#{url}")
+    url = "https://www.parisinfo.com#{url}"
+    html_page = scrap_to_html (url)
     detailed_desc = html_page.search('.ezxmltext-field').text.strip
     unless html_page.css('a:contains("Site Internet de l’événement")').attribute('href').nil?
       link = html_page.css('a:contains("Site Internet de l’événement")').attribute('href').value
@@ -39,7 +40,6 @@ def create_expos_from_html(html_doc)
     placeaddress = element.search('.Article-line-place').text.strip.gsub("\n","").gsub(/ +/," ")
     place = placeaddress.match('.*(?= - )').to_s
     address = placeaddress.gsub(place,"").gsub(" - ","")
-    description = element.search('.Article-line-content').text.strip.gsub("\n","").gsub(/ +/," ")
     site = Site.where("name ILIKE ?", place).first
     old_exhib = Exhibition.where("title ILIKE ?", title).first
     unless old_exhib.nil?
@@ -62,6 +62,7 @@ def create_expos_from_html(html_doc)
 end
 
 def scrap_to_html (url)
+  url = URI.escape(url) unless url.ascii_only?
   html = open(url).read
   html_doc = Nokogiri::HTML(html)
   return html_doc
